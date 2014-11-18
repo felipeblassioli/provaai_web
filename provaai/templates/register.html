@@ -1,0 +1,28 @@
+{% extends "common/base.html" %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+{% from "common/_macros.html" import render_field %}
+
+Descubra que as lojas estão bem mais perto do que você imagina.
+
+<input type=button value="Entre com o Facebook" />
+Ou
+Preencha os campo abaixo para criar o cadastro
+<form method=post action="{{ url_for('register') }}">
+    {{ form.csrf_token }}
+    {{ render_field(form.name) }}
+    {{ render_field(form.last_name) }}
+    {{ render_field(form.age) }}
+    {{ render_field(form.email) }}
+    {{ render_field(form.email_confirm) }}
+    {{ render_field(form.password) }}
+    {{ render_field(form.confirm) }}
+    {{ render_field(form.address) }}
+    {{ render_field(form.city) }}
+    {{ render_field(form.zip_code) }}
+    {{ render_field(form.accept_news) }}
+    {{ render_field(form.accept_tos) }}
+    <input type="submit" value="Concluir Cadastro">
+</form>
+{% endblock %}

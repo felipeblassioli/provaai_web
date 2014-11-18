@@ -1,0 +1,2 @@
+recursive-include provaai/templates *
+recursive-include provaai/static *

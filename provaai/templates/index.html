@@ -1,0 +1,41 @@
+{% extends "common/base.html" %}
+
+{% block head %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_anonymous() %}
+<section>
+    <div id="conteudoTopoHome">
+        <h2>Descubra que as lojas estão bem mais perto do que você imagina.</h2>
+        <div id="botaoCadastre-se" class="btnVermelho">
+            <a href="{{ url_for('register') }}" title="Cadastre-se já!">Cadastre-se</a>
+        </div>
+        <p>Se você é um lojista, <a href="{{ url_for('StoreView:register_store')}}" title="Clique aqui se você é um lojista.">clique aqui</a>.</p>
+    </div>
+</section>
+{% endif %}
+
+<!-- {% include 'home/slide.html' %} -->
+{% include 'home/produtosHome.html' %}
+{% if user.first_login %}
+	{% include 'home/welcome.html' %}
+	<script>
+		$(function() {
+			$( "#dialog" ).dialog({
+				autoOpen: true,
+				modal: true,
+				position: 'center' ,
+				title: 'Video Upload',
+				draggable: false,
+				open: function() {
+					$('.ui-dialog-titlebar-close').bind('click', function() {});
+				}
+			});
+		});
+	</script>
+{% endif %}
+
+{% endblock %}

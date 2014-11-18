@@ -1,0 +1,68 @@
+<header>
+    <div class="container">
+        <div class="row">
+            <div id="logo" class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+                <h1>
+                    <a href="/" title="Link Home Prova Aí!">
+                        <img src="..../img/logo.png" alt="Prova Aí" class="img-responsive">
+                    </a>
+                </h1>
+            </div>
+            
+            
+            {% if user.is_anonymous() %}
+            
+            <div id="barraDeBusca" class="col-xs-12 col-sm-5 col-md-5 col-lg-7">
+                <input type="text" id="buscaTag" name="buscaTag" placeholder="Buscar por...">
+                <div id="stylishSelect">
+                    <select id="selectCidadeBusca">
+                        <option value="1">São Paulo, SP</option>
+                        <option value="2">Atibaia, SP</option>
+                        <option value="3">Guarulhos, SP</option>
+                        <option value="4">Campinas, SP</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="fazerLogin">
+                <div id="botaoLogin" class="btnVermelho col-xs-12 col-sm-3 col-md-3 col-lg-2">
+                    <a href="javascript:void(0);">Entrar</a>
+                </div>
+                {% include 'login.html' %}
+            </div>
+            
+            {% else %}
+
+            <div id="barraDeBuscaLogado" class="col-xs-12 col-sm-5 col-md-5 col-lg-6">
+                <input type="text" id="buscaTag" name="buscaTag" placeholder="Buscar por...">
+                <div id="stylishSelect">
+                    <select id="selectCidadeBusca">
+                        <option value="1">São Paulo, SP</option>
+                        <option value="2">Atibaia, SP</option>
+                        <option value="3">Guarulhos, SP</option>
+                        <option value="4">Campinas, SP</option>
+                    </select>
+                </div>
+            </div>
+            <div id="dadosUsuario" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="meuArmario col-xs-4 col-sm-4 col-md-4 col-lg-2">
+                    <a href="#" title="Meu armário">
+                        <img src="../img/meu-armario.png" alt="Meu Armário">
+                    </a>
+                </div>
+                <div class="meuPerfil col-xs-8 col-sm-8 col-md-8 col-lg-10">
+                    <a href="#" title="Meu perfil">
+                        <div class="imagemPerfilUsuario">
+                            <img src="../img/usuarios/melksedeque-de-souza-silva.jpg" alt="Melksedeque de Souza Silva" class="img-responsive">
+                        </div>
+                        <div class="nomePerfilUsuario">
+                            <p>{{ user.name }} <i class="fa fa-caret-down"></i></p>
+                            <a href="{{ url_for('logout') }}">LogOut</a>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div> 
+    {% endif %}
+</header>

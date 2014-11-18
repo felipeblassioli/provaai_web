@@ -1,0 +1,384 @@
+body {
+	font-family: 'Open Sans';
+}
+section {
+	clear: both;
+}
+header {
+	background-image: linear-gradient(to bottom, #FFFFFF, #F8F8F8);
+	box-shadow: 0 0 5px #000000;
+}
+.first {
+	margin-left: 0px!important;
+}
+.last {
+	margin-right: 0px!important;
+}
+#barraDeBusca {
+	border: 1px solid #DEDEDE;
+	border-radius: 5px;
+	margin: 35px;
+	padding: 0px;
+}
+#barraDeBusca input {
+	border: none;
+	display: block;
+	float: left;
+	margin: 1px;
+	padding: 9px 10px;
+	width: 78%;
+}
+#barraDeBusca #stylishSelect {
+    background: url("../img/select-arrow.png") no-repeat scroll 125px center #CA0E0E; /* novo ícone para o <select> */
+    border-radius: 0px 5px 5px 0;
+    color: #FFFFFF;
+    overflow: hidden;
+}
+#barraDeBusca #stylishSelect select#selectCidadeBusca {
+	background: transparent; /* importante para exibir o novo ícone */
+	border: 0;
+    border-radius: 0;
+    cursor: pointer;
+	display: block;
+	float: left;
+	font-size: 15px;
+	height: 40px;
+	line-height: 1;
+    padding: 5px;
+    -webkit-appearance: none;
+    width: 120%
+}
+#fazerLogin {
+	position: relative;
+}
+.btnVermelho {
+	margin: 35px 0;
+}
+.btnVermelho a {
+	background-image: linear-gradient(to bottom, #E70000, #C90F0F);
+	border: 2px solid #CA0E0E;
+	border-radius: 5px;
+	color: #FFFFFF;
+	display: block;
+	font-weight: bold;
+	height: 40px;
+	padding: 8px;
+	text-align: center;
+	width: 100%;
+}
+.btnVermelho a:hover {
+	background-image: linear-gradient(to bottom, #C90F0F, #E70000);
+	text-decoration: none;
+}
+#botaoLogin a {
+	float: right;
+	height: 41px;
+}
+#formularioLogin {
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px 1px #777777;
+    height: auto;
+    padding: 10px 20px;
+    position: absolute;
+    right: 43px;
+    top: 77px;
+    width: 350px;
+    z-index: 999;
+}
+#formularioLogin img {
+	margin: 20px auto;
+    width: 150px;
+}
+#formularioLogin .formularioLogin input {
+	border: 1px solid #DEDEDE;
+	border-radius: 5px;
+	height: 35px;
+	margin-bottom: 10px;
+}
+#formularioLogin input#permanecerLogado {
+	border-radius: 5px;
+	float: left;
+}
+
+#formularioLogin label {
+	color: #777777;
+	float: left;
+	font-weight: normal;
+	margin-left: 10px;
+}
+#formularioLogin a#esqueceuSenha {
+	color: #C90F0F;
+	float: right;
+}
+#formularioLogin a#esqueceuSenha:hover {
+	text-decoration: underline;
+}
+#formularioLogin .outrasOpcoesLogin {
+    display: block;
+    float: left;
+    margin: 0 30px;
+    width: 80%;
+}
+#formularioLogin .outrasOpcoesLogin a {
+	color: #777777;
+	display: block;
+	float: left;
+	padding: 10px 0;
+	text-align: center;
+	text-decoration: underline;
+	width: 100%;
+}
+#formularioLogin .outrasOpcoesLogin a:hover {
+	text-decoration: none;
+}
+#formularioLogin .outrasOpcoesLogin a#aindaNaoCadastrou {
+	border-bottom: 1px solid #C90F0F;
+}
+
+
+#barraDeBuscaLogado {
+	border: 1px solid #DEDEDE;
+	border-radius: 5px;
+	margin: 35px 0;
+	padding: 0px;
+}
+#barraDeBuscaLogado input {
+	border: none;
+	display: block;
+	float: left;
+	margin: 1px;
+	padding: 9px 10px;
+	width: 75%;
+}
+#barraDeBuscaLogado #stylishSelect {
+    background: url("../img/select-arrow.png") no-repeat scroll 125px center #CA0E0E; /* novo ícone para o <select> */
+    border-radius: 0px 5px 5px 0;
+    color: #FFFFFF;
+    overflow: hidden;
+}
+#barraDeBuscaLogado #stylishSelect select#selectCidadeBusca {
+	background: transparent; /* importante para exibir o novo ícone */
+	border: 0;
+    border-radius: 0;
+    cursor: pointer;
+	display: block;
+	float: left;
+	font-size: 15px;
+	height: 40px;
+	line-height: 1;
+    padding: 5px;
+    -webkit-appearance: none;
+    width: 120%
+}
+#dadosUsuario {
+	margin: 35px 0;
+}
+#dadosUsuario .meuArmario,
+#dadosUsuario .meuPerfil {
+	padding: 0 10px;
+}
+#dadosUsuario .meuPerfil a {
+	color: #777777;
+}
+#dadosUsuario .meuPerfil a:hover {
+	color: #3D3D3D;
+}
+#dadosUsuario .meuPerfil a:hover p {
+	text-decoration: underline;
+}
+#dadosUsuario .meuPerfil .imagemPerfilUsuario {
+	border: 1px solid #DEDEDE;
+	border-radius: 23px;
+	display: block;
+	float: left;
+	height: 45px;
+	overflow: hidden;
+	width: 45px;
+}
+#dadosUsuario .meuPerfil .nomePerfilUsuario {
+	padding: 10px 0px;
+}
+#dadosUsuario .meuPerfil .nomePerfilUsuario p {
+	display: block;
+    float: left;
+    margin: 0 0 0 10px;
+}
+#dadosUsuario .meuPerfil .nomePerfilUsuario p i {
+	padding-left: 5px;
+}
+footer {
+	border-top: 2px solid #CA0E0E;
+	margin-top: 20px;
+}
+#copyright {
+	display: block;
+	margin: 20px;
+	text-align: center;
+}
+
+#conteudoTopoHome {
+	border-bottom: 1px solid #CA0E0E;
+}
+#conteudoTopoHome h2 {
+	color: #023469;
+	font-size: 24px;
+	text-align: center;
+}
+#conteudoTopoHome #botaoCadastre-se {
+	margin: 20px auto;
+	width: 250px;
+}
+#conteudoTopoHome p {
+	font-size: 14px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+#conteudoTopoHome p a {
+	color: #CA0E0E;
+}
+#conteudoTopoHome p a:hover {
+	color: rgb(170,0,0);
+}
+
+#slide {
+	margin: 35px 0;
+	position: relative;
+}
+#slide .slideControler a {
+	display: block;
+	position: absolute;
+	z-index: 999;
+}
+#slide .slideControler a#prev {
+	left: 0;
+	top: 300px;
+}
+#slide .slideControler a#next {
+	right: 0;
+	top: 300px;
+}
+#slide .slideControler a i {
+	color: rgba(2, 52, 105, 0.3);
+	font-size: 100px;
+}
+#slide .slideControler a:hover i {
+	color: rgba(2, 52, 105, 0.7);
+}
+
+.peca {
+    border-radius: 7px;
+    box-shadow: 0px 0px 3px 0px #AAAAAA;
+    display: block;
+    height: 360px;
+    margin: 10px 20px 30px;
+    padding: 0;
+    position: relative;
+    width: 235px;
+}
+.peca .imgPeca {
+	border-radius: 7px;
+}
+.peca .tituloPeca {
+	background-color: rgba(255,255,255,0.5);
+	border-radius: 7px 7px 0 0;
+	display: block;
+	height: 45px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+}
+.peca .tituloPeca img.logoDaMarca {
+	border-radius: 15px;
+	display: block;
+	float: left;
+    margin: 7px 10px;
+}
+.peca .tituloPeca a h2 {
+	color: #3D3D3D;
+    display: block;
+    float: left;
+    font-size: 20px;
+    margin: 10px 0;
+}
+.peca .tituloPeca a:hover h2 {
+	color: #111111;
+}
+.peca .tituloPeca img.addAoArmario {
+	border-radius: 7px;
+	display: block;
+	float: right;
+	margin: 7px 10px;
+}
+.peca .descricaoPeca {
+	background-image: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+	border-radius: 0 0 7px 7px;
+    bottom: 0;
+    display: block;
+    height: 200px;
+    position: absolute;
+}
+.peca .descricaoPeca h3 {
+	color: #FFFFFF;
+    font: normal 16px 'Open Sans';
+    margin: 120px 10px 0;
+    width: 80%;
+}
+.peca .descricaoPeca .prevDadosPeca {
+	background: url("../img/bg-dados-peca.png") no-repeat scroll 0 0 transparent;
+	bottom: 0;
+	border-radius: 0 0px 7px 0px;
+	display: block;
+	height: 50px;
+	position: absolute;
+	right: 0;
+	width: 50px;
+}
+.peca .descricaoPeca .dadosPeca {
+	background-color: #39B54A;
+	border-radius: 0 0 7px 7px;
+	bottom: 0;
+	height: 85px;
+	position: absolute;
+	width: 100%;
+}
+.peca .descricaoPeca .dadosPeca .localizacaoPeca {
+	display: block;
+    float: left;
+    padding: 18px 0 0 10px;
+}
+.peca .descricaoPeca .dadosPeca .precoPeca {
+	border: 1px solid #FFFFFF;
+    border-radius: 50%;
+    color: #ffffff;
+    display: block;
+    float: left;
+    height: 50px;
+    margin: 18px 18px 0;
+    padding: 4px;
+    text-align: center;
+    width: 50px;
+}
+.peca .descricaoPeca .dadosPeca .precoPeca p {
+	font-size: 12px;
+}
+.peca .descricaoPeca .dadosPeca .precoPeca p span {
+	font-size: 16px;
+	font-weight: bold;
+}
+.peca .descricaoPeca .dadosPeca .aprovaramDesaprovaramPeca {
+	color: #FFFFFF;
+    display: block;
+    float: left;
+    font: normal 11px/15px 'Open Sans';
+    margin: 10px 0;
+    width: 87px;
+}
+.peca .descricaoPeca .dadosPeca .aprovaramDesaprovaramPeca p {
+	margin: 0;
+}
+.peca .descricaoPeca .dadosPeca .aprovaramDesaprovaramPeca p span {
+	font-size: 16px;
+	font-weight: bold;
+}

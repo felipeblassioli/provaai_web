@@ -1,0 +1,6 @@
+DATABASE = {
+	'name': 'provaai',
+	'engine': 'peewee.MySQLDatabase',
+	'user': 'root',
+	'passwd': 'algebra2'
+}

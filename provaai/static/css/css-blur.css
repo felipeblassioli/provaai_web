@@ -1,0 +1,18 @@
+* {
+	margin: 0; padding: 0;
+}
+
+body {
+	font: 15px "Times New Roman", Times, serif;
+	background: url(images/background.jpg) no-repeat fixed;
+}
+
+.blur-class {
+	width: 450px;
+	margin:15px 15px 15px 15px;
+	background: url(images/background-blur.jpg) no-repeat fixed;
+	border: 2px #ffffff solid;
+	padding: 25px 0 0 0;
+	min-height: 159px;
+	float:left;
+}

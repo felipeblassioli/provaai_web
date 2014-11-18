@@ -1,0 +1,26 @@
+{% extends "common/base.html" %}
+{% block title %}Register{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+{% block content %}
+{% from "common/_macros.html" import render_field %}
+<form method=post action="/register/">
+  <dl>
+    {{ form.csrf_token }}
+    {{ render_field(form.name) }}
+    {{ render_field(form.last_name) }}
+    {{ render_field(form.email) }}
+    {{ render_field(form.email_confirm) }}
+    {{ render_field(form.password) }}
+    {{ render_field(form.confirm) }}
+    {{ render_field(form.address) }}
+    {{ render_field(form.accept_news) }}
+    {{ render_field(form.accept_tos) }}
+  </dl>
+  <p><input type="submit" value="Register">
+</form>
+{% endblock %}

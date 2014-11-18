@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="prova, ai" />
+    <meta name="description" content="Prova aí!">
+
+    <title>{% block title %}{% endblock %} - ProvaAí !</title>
+    
+    <link href="{{ url_for('static', filename='img/icon.png') }}" rel="icon" type="image/x-icon"/>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/fonts-awesome/css/font-awesome.css') }}" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if IE 7]>
+        <link rel="stylesheet" href="/css/fonts-awesome/css/font-awesome-ie7.min.css">
+    <![endif]-->
+
+    <link href="{{ url_for('static', filename='css/estilos.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='css/dialogs.css') }}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-2.1.1.min.js') }}"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.cycle2.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script> 
+    <script type="text/javascript" src="{{ url_for('static', filename='js/blur.min.js') }}"></script>
+
+    {% block head %}{% endblock %}
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <section id="content">{% block content %}{% endblock %}</section>
+
+    <footer>
+        {% block footer %}
+        <div class="container">
+            <div class="row">
+                <div id="copyright">
+                    <p>@Company ® - All rights reserved</p>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+    </footer>
+</body>

@@ -1,0 +1,54 @@
+{% macro render_cloth(cloth) %}
+  <li class="peca col-xs-12 col-sm-4 col-md-4 col-lg-3">
+    <img src="{{ cloth.image.url }}" class="img reponsive imgPeca" />
+    <!-- Titulo -->
+     <div class="tituloPeca" style="display: none;">
+        <a href="#" class="linkMarca">
+            <img src="{{ url_for('static', filename='img/marcas/hollister.png') }}" alt="Logo da marca" class="img-responsive logoDaMarca">
+            <h2>{{ cloth.brand.name|safe }}</h2>
+        </a>
+        <a href="#" class="linkAddArmario">
+            <img src="{{ url_for('static', filename='img/add-ao-armario.png') }}" alt="Adicionar ao armário" class="img-responsive addAoArmario">
+        </a>
+    </div> <!-- tituloPeca -->
+    <!-- Descricao -->
+    <div class="descricaoPeca" style="display: none;">
+        <h3>{{ cloth.description|safe }}</h3>
+        <div class="prevDadosPeca"></div>
+        <div class="dadosPeca" style="display: none;">
+            <div class="localizacaoPeca">
+                <a href="#" title="">
+                    <img src="{{ url_for('static', filename='img/localizacao-peca.png') }}" alt="Localização da peça">
+                </a>
+            </div>
+            <div class="precoPeca">
+                <p>R$<br><span>{{ cloth.price }}</span></p>
+            </div>
+            <div class="aprovaramDesaprovaramPeca">
+                <div class="aprovaramPeca">
+                    <p>Aprovaram<br><span>130</span></p>
+                </div>
+                <div class="desaprovaramPeca">
+                    <p>Desaprovaram<br><span>12</span></p>
+                </div>
+            </div>
+        </div>
+    </div><!-- descricaoPeca -->
+  </li>
+{% endmacro %}
+
+<section>
+    <div id="produtosHome">
+        <div class="container">
+            <div class="row">
+                <div class="pecasHome col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="listaPecas">
+                        {% for cloth in showcase %}
+                            {{ render_cloth(cloth) }}
+                        {% endfor %}
+                    </ul>
+                </div><!-- pecasHome -->
+            </div><!-- row -->
+        </div><!-- container -->
+    </div><!-- produtosHome -->
+</section>

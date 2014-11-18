@@ -1,0 +1,21 @@
+{% set field_class = 'col-xs-12 col-sm-3 col-md-3 col-lg-12' %}
+
+{% from "common/_macros.html" import render_field %}
+
+<div style="display: none;" id="formularioLogin">
+	<img src="{{ url_for('static', filename='img/logo.png') }}" alt="Prova Aí" class="img-responsive">
+
+	<form method=post action="{{ url_for('login') }}" class="formularioLogin">
+		{{ forms['login'].csrf_token }}
+		{{ render_field(forms['login'].email,class_=field_class) }}
+		{{ render_field(forms['login'].password,class_=field_class) }}
+		<input type="submit" value="Entrar" class="entrarProvaAi {{ field_class }}">
+	</form>
+
+	<input type="checkbox" id="permanecerLogado" name="permanecerLogado" value="Permanecer logado"><label for="permanecerLogado">Permanecer logado.</label>
+	<a href="#" title="Esqueceu sua senha?" id="esqueceuSenha">Esqueceu sua senha?</a>
+	<div class="outrasOpcoesLogin">
+		<a href="#" title="Ainda não se Cadastrou?" id="aindaNaoCadastrou">Ainda não se cadastrou?</a>
+		<a href="#" title="Lojista? Então clique aqui.">Lojista? Então clique aqui.</a>
+	</div>
+</div>

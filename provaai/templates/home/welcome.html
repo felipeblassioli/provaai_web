@@ -1,0 +1,17 @@
+<div id="dialog">
+	<h1>Bem vindo ao Prova Ai.</h1>
+	<h2>Milhões de lojas estão esperando você</h2>
+
+	<video width="400" controls>
+		<source src="mov_bbb.mp4" type="video/mp4">
+		<source src="mov_bbb.ogg" type="video/ogg">
+		Your browser does not support HTML5 video.
+	</video>
+
+	Agora com o prova ai, você pode ter num único lugar todas as roupas que estão sendo vendidas perto de você.
+
+	<button id="bt_storeOwner" type="button" onClick="window.location='{{ url_for('StoreView:register_store') }}';">Se você for um lojista</button>
+	<button id="bt_done" type="button" onClick="window.location='{{ url_for('index') }}?action=register_done';">Concluir seu cadastro</button> 
+
+	Clique aqui e cadastre sua loja, milhões de compradores estão esperando por você.
+</div>
