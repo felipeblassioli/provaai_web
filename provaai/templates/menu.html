@@ -1,0 +1,40 @@
+{% if user.has_store %}
+    <div style="display: none;" id="menuUsuarioComLoja">
+        <div class="trocaDeUsuario">
+            <p>Trocar de usuário</p>
+            <ul class="usuarioOuLoja">
+                <li><a href="javascript:void(0);" title="Nome do Usuário">
+                    <div class="imagemTrocarParaUsuario">
+                        <img src="/img/usuarios/melksedeque-de-souza-silva.jpg" alt="Melksedeque de Souza Silva" class="img-responsive">
+                    </div>
+                </a></li>
+                <li><a href="javascript:void(0);" title="Nome da Loja">
+                    <div class="imagemTrocarParaLoja">
+                        <img src="/img/lojas/nike.png" alt="Loja Numero 1" class="img-responsive">
+                    </div>
+                </a></li>
+                <li><a href="javascript:void(0);" title="Nome da Loja">
+                    <div class="imagemTrocarParaLoja">
+                        <img src="/img/lojas/nike.png" alt="Loja Numero 2" class="img-responsive">
+                    </div>
+                </a></li>
+            </ul>
+        </div>
+        <ul class="menuUsuarioComLoja">
+            <li><a href="/store-edit.html" title="Criar uma loja">Administrar loja</a></li>
+            <li><a href="/closet.html" title="Meu armário">Meu armário</a></li>
+            <li><a href="/store-settings.html" title="Configurações da loja">Configurações da loja</a></li>
+            <li><a href="/user-settings.html" title="Configurações do usuário">Configurações do usuário</a></li>
+            <li><a href="{{ url_for('logout') }}" title="Sair">Sair</a></li>
+        </ul>
+    </div> <!-- menuUsuarioComLoja -->
+{% else %}
+    <div style="display: none;" id="menuUsuario">
+        <ul class="menuUsuario">
+            <li><a href="/store-register.html" title="Criar uma loja">Criar uma loja</a></li>
+            <li><a href="/closet.html" title="Meu armário">Meu armário</a></li>
+            <li><a href="/user-settings.html" title="Configurações">Configurações</a></li>
+            <li><a href="{{ url_for('logout') }}" title="Sair">Sair</a></li>
+        </ul>
+    </div> <!-- menuUsuario -->
+{% endif %}

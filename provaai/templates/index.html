@@ -15,23 +15,16 @@
 
 	<!-- {% include 'home/slide.html' %} -->
 	{% include 'home/produtosHome.html' %}
-	
+
+{% endblock %}
+
+{% block tail %}
 	{% if user.first_login %}
 		{% include 'home/welcome.html' %}
 		<script>
-			$(function() {
-				$( "#dialog" ).dialog({
-					autoOpen: true,
-					modal: true,
-					position: 'center' ,
-					title: 'Video Upload',
-					draggable: false,
-					open: function() {
-						$('.ui-dialog-titlebar-close').bind('click', function() {});
-					}
-				});
-			});
+		    $(window).load(function(){
+		        $('#dialog').modal('show');
+		    });
 		</script>
 	{% endif %}
-
 {% endblock %}

@@ -103,7 +103,7 @@ def register():
             accept_news = form.accept_news.data
         )
         usr = User.create(**params)
-        Store.create(owner=usr,name="Loja Teste")
+        #Store.create(owner=usr,name="Loja Teste")
         login_user(usr)
         print jsonify(params)
         return _redirect("index")

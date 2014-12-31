@@ -34,7 +34,14 @@ class User(BaseModel, UserMixin):
 
 	@property
 	def store(self):
-		return Store.get(Store.owner == self)
+		try:
+			return Store.get(Store.owner == self)
+		except Store.DoesNotExist:
+			return None
+
+	@property
+	def has_store(self):
+		return self.store is not None
 
 class Store(BaseModel):
 	owner = ForeignKeyField(User)

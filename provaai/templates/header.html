@@ -88,125 +88,100 @@
 
                     {% include 'login.html' %}
 
-                </div>
+                </div> <!-- fazerLogin -->
                         
         {% else %}
             <div id="barraDeBuscaLogado" class="col-xs-12 col-sm-5 col-md-5 col-lg-6">
-                        <div class="form-group">    
-                            <div class="input-group">
-                                <span class="input-group-btn">
-                                    <select class="btn btn-default btn-danger dropdown-toggle selectSexoBusca">
-                                        <option value="F/M">F/M</option>
-                                        <option value="F">F</option>
-                                        <option value="M">M</option>
-                                    </select>
-                                </span>
+                <div class="form-group">    
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <select class="btn btn-default btn-danger dropdown-toggle selectSexoBusca">
+                                <option value="F/M">F/M</option>
+                                <option value="F">F</option>
+                                <option value="M">M</option>
+                            </select>
+                        </span>
 
-                                <div id="buscaAvancada">
-                                    <input class="form-control" type="text" id="searchBar" name="searchBar" data-role="tagsinput">
-                                    <input type="submit" value="" id="submitSearch"> 
-                                </div>
-
-                                <ul id="categoriesBox" style="display: none;">
-                                    <li><a href="javascript:void(0);" title="Categoria">Categoria</a></li>
-                                    <li><a href="javascript:void(0);" title="Esporte">Esporte</a></li>
-                                    <li><a href="javascript:void(0);" title="Training">Training</a></li>
-                                    <li><a href="javascript:void(0);" title="Kids">Kids</a></li>
-                                    <li><a href="javascript:void(0);" title="Tenis">Tênis</a></li>
-                                    <li><a href="javascript:void(0);" title="Futebol">Futebol</a></li>
-                                    <li><a href="javascript:void(0);" title="Basquete">Basquete</a></li>
-                                    <li><a href="javascript:void(0);" title="Calçados">Calçados</a></li>
-                                    <li><a href="javascript:void(0);" title="Camisas">Camisas</a></li>
-                                    <li><a href="javascript:void(0);" title="Acessórios">Acessórios</a></li>
-                                    <li><a href="javascript:void(0);" title="Shorts">Shorts</a></li>
-                                    <li><a href="javascript:void(0);" title="Social">Social</a></li>
-                                    <li><a href="javascript:void(0);" title="Camisetas">Camisetas</a></li>
-                                    <li><a href="javascript:void(0);" title="Blusões">Blusões</a></li>
-                                    <li><a href="javascript:void(0);" title="Moletom">Moletom</a></li>
-                                    <li><a href="javascript:void(0);" title="Esportivo">Esportivo</a></li>
-                                </ul>
-                                
-                                <span class="input-group-btn">
-                                    <select class="btn btn-default btn-danger dropdown-toggle selectLocalBusca">
-                                        <option value="NULL">Selecione o Local</option>
-                                        <option value="AC">Acre</option>
-                                        <option value="AL">Alagoas</option>
-                                        <option value="AM">Amazonas</option>
-                                        <option value="AP">Amapá</option>
-                                        <option value="BA">Bahia</option>
-                                        <option value="CE">Ceará</option>
-                                        <option value="DF">Distrito Federal</option>
-                                        <option value="ES">Espirito Santo</option>
-                                        <option value="GO">Goiás</option>
-                                        <option value="MA">Maranhão</option>
-                                        <option value="MG">Minas Gerais</option>
-                                        <option value="MS">Mato Grosso do Sul</option>
-                                        <option value="MT">Mato Grosso</option>
-                                        <option value="PA">Pará</option>
-                                        <option value="PB">Paraíba</option>
-                                        <option value="PE">Pernambuco</option>
-                                        <option value="PI">Piauí</option>
-                                        <option value="PR">Paraná</option>
-                                        <option value="RJ">Rio de Janeiro</option>
-                                        <option value="RN">Rio Grande do Norte</option>
-                                        <option value="RO">Rondônia</option>
-                                        <option value="RR">Roraima</option>
-                                        <option value="RS">Rio Grande do Sul</option>
-                                        <option value="SC">Santa Catarina</option>
-                                        <option value="SE">Sergipe</option>
-                                        <option value="SP">São Paulo</option>
-                                        <option value="TO">Tocantins</option>
-                                    </select>
-                                </span>
-                            </div>
+                        <div id="buscaAvancada">
+                            <input class="form-control" type="text" id="searchBar" name="searchBar" data-role="tagsinput">
+                            <input type="submit" value="" id="submitSearch"> 
                         </div>
+
+                        <ul id="categoriesBox" style="display: none;">
+                            <li><a href="javascript:void(0);" title="Categoria">Categoria</a></li>
+                            <li><a href="javascript:void(0);" title="Esporte">Esporte</a></li>
+                            <li><a href="javascript:void(0);" title="Training">Training</a></li>
+                            <li><a href="javascript:void(0);" title="Kids">Kids</a></li>
+                            <li><a href="javascript:void(0);" title="Tenis">Tênis</a></li>
+                            <li><a href="javascript:void(0);" title="Futebol">Futebol</a></li>
+                            <li><a href="javascript:void(0);" title="Basquete">Basquete</a></li>
+                            <li><a href="javascript:void(0);" title="Calçados">Calçados</a></li>
+                            <li><a href="javascript:void(0);" title="Camisas">Camisas</a></li>
+                            <li><a href="javascript:void(0);" title="Acessórios">Acessórios</a></li>
+                            <li><a href="javascript:void(0);" title="Shorts">Shorts</a></li>
+                            <li><a href="javascript:void(0);" title="Social">Social</a></li>
+                            <li><a href="javascript:void(0);" title="Camisetas">Camisetas</a></li>
+                            <li><a href="javascript:void(0);" title="Blusões">Blusões</a></li>
+                            <li><a href="javascript:void(0);" title="Moletom">Moletom</a></li>
+                            <li><a href="javascript:void(0);" title="Esportivo">Esportivo</a></li>
+                        </ul>
+                        
+                        <span class="input-group-btn">
+                            <select class="btn btn-default btn-danger dropdown-toggle selectLocalBusca">
+                                <option value="NULL">Selecione o Local</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espirito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="PR">Paraná</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="TO">Tocantins</option>
+                            </select>
+                        </span>
                     </div>
-                    <div id="dadosUsuario" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                        <div class="meuArmario col-xs-4 col-sm-4 col-md-4 col-lg-2">
-                            <a href="/closet.html" title="Meu armário">
-                                <img src="/img/meu-armario.png" alt="Meu Armário">
-                            </a>
+                </div>
+            </div> <!-- barraDeBuscaLogado -->
+
+            <div id="dadosUsuario" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="meuArmario col-xs-4 col-sm-4 col-md-4 col-lg-2">
+                    <a href="/closet.html" title="Meu armário">
+                        <img src="/img/meu-armario.png" alt="Meu Armário">
+                    </a>
+                </div> <!-- meuArmario -->
+
+
+                <div class="meuPerfil col-xs-8 col-sm-8 col-md-8 col-lg-10">
+                    <a href="javascript:void(0);" title="Meu perfil" class="linkAcessarMenuUsuario">
+                        <div class="imagemPerfilUsuario">
+                            <img src="/img/usuarios/melksedeque-de-souza-silva.jpg" alt="{{ user.name }}" class="img-responsive">
                         </div>
-                        <div class="meuPerfil col-xs-8 col-sm-8 col-md-8 col-lg-10">
-                            <a href="javascript:void(0);" title="Meu perfil" class="linkAcessarMenuUsuario">
-                                <div class="imagemPerfilUsuario">
-                                    <img src="/img/usuarios/melksedeque-de-souza-silva.jpg" alt="Melksedeque de Souza Silva" class="img-responsive">
-                                </div>
-                                <div class="nomePerfilUsuario">
-                                    <p>Melksedeque de Souza Silva <i class="fa fa-caret-down"></i></p>
-                                </div>
-                            </a>
+                        <div class="nomePerfilUsuario">
+                            <p> {{ user.name }}<i class="fa fa-caret-down"></i></p>
+                        </div>
+                    </a>
 
-
-                                            <div style="display: none;" id="menuUsuarioComLoja">
-                                <div class="trocaDeUsuario">
-                                    <p>Trocar de usuário</p>
-                                    <ul class="usuarioOuLoja">
-                                        <li><a href="javascript:void(0);" title="Nome do Usuário">
-                                            <div class="imagemTrocarParaUsuario">
-                                                <img src="/img/usuarios/melksedeque-de-souza-silva.jpg" alt="Melksedeque de Souza Silva" class="img-responsive">
-                                            </div>
-                                        </a></li>
-                                        <li><a href="javascript:void(0);" title="Nome da Loja">
-                                            <div class="imagemTrocarParaLoja">
-                                                <img src="/img/lojas/nike.png" alt="Loja Numero 1" class="img-responsive">
-                                            </div>
-                                        </a></li>
-                                        <li><a href="javascript:void(0);" title="Nome da Loja">
-                                            <div class="imagemTrocarParaLoja">
-                                                <img src="/img/lojas/nike.png" alt="Loja Numero 2" class="img-responsive">
-                                            </div>
-                                        </a></li>
-                                    </ul>
-                                </div>
-                                <ul class="menuUsuarioComLoja">
-                                    <li><a href="/store-edit.html" title="Criar uma loja">Administrar loja</a></li>
-                                    <li><a href="/closet.html" title="Meu armário">Meu armário</a></li>
-                                    <li><a href="/store-settings.html" title="Configurações da loja">Configurações da loja</a></li>
-                                    <li><a href="/user-settings.html" title="Configurações do usuário">Configurações do usuário</a></li>
-                                    <li><a href="javascript:void(0);" title="Sair">Sair</a></li>
-                                </ul>
-                            </div>
+                {% include 'menu.html' %}
+            </div> <!-- meuPerfil -->
 
         {% endif %}
         </div> <!-- row -->
