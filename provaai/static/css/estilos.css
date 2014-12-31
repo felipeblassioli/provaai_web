@@ -1,5 +1,5 @@
 body {
-	font-family: 'Open Sans';
+	font-family: 'Open Sans', 'Josefin Sans', 'Lato';
 }
 section {
 	clear: both;
@@ -8,87 +8,188 @@ header {
 	background-image: linear-gradient(to bottom, #FFFFFF, #F8F8F8);
 	box-shadow: 0 0 5px #000000;
 }
+h1 {
+	color: #023469;
+	font-weight: bold;
+}
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
 .first {
+	border-left: none;
 	margin-left: 0px!important;
 }
 .last {
+	border-right: none;
 	margin-right: 0px!important;
 }
+.left {
+	display: block;
+	float: left;
+}
+.right {
+	display: block;
+	float: right;
+}
+.row {
+	margin: 0;
+}
+.modal-lg {
+	margin-top: 15px; 
+}
 #barraDeBusca {
-	border: 1px solid #DEDEDE;
-	border-radius: 5px;
-	margin: 35px;
-	padding: 0px;
+    margin: 25px 45px 15px;
+    padding: 0;
 }
-#barraDeBusca input {
-	border: none;
+#barraDeBuscaLogado {
+	margin: 25px 0 15px;
+	padding: 0;
+}
+#barraDeBusca input, #barraDeBuscaLogado input {
+	border: medium none;
+    display: block;
+    height: 30px;
+}
+#barraDeBuscaLogado ul#categoriesBox li {
+	margin: 15px 16px;
+}
+input#submitSearch {
+	background: url("../img/lupa.png") scroll center center no-repeat transparent;
 	display: block;
-	float: left;
-	margin: 1px;
-	padding: 9px 10px;
-	width: 78%;
-}
-#barraDeBusca #stylishSelect {
-    background: url("../img/select-arrow.png") no-repeat scroll 125px center #CA0E0E; /* novo ícone para o <select> */
-    border-radius: 0px 5px 5px 0;
-    color: #FFFFFF;
-    overflow: hidden;
-}
-#barraDeBusca #stylishSelect select#selectCidadeBusca {
-	background: transparent; /* importante para exibir o novo ícone */
-	border: 0;
-    border-radius: 0;
-    cursor: pointer;
-	display: block;
-	float: left;
-	font-size: 15px;
 	height: 40px;
-	line-height: 1;
-    padding: 5px;
-    -webkit-appearance: none;
-    width: 120%
+	padding: 2px;
+	position: absolute;
+	right: 169px;
+	top: 0;
+	width: 40px;
+	z-index: 99;
 }
+select.selectSexoBusca::-ms-expand,
+select.selectLocalBusca::-ms-expand {
+    display: none;
+}
+select.selectSexoBusca {
+	width: 58px;
+}
+select.selectSexoBusca, select.selectLocalBusca {
+	height: 40px; 
+	-webkit-appearance: none;
+}
+ul#categoriesBox {
+	background-color: #FFFFFF;
+	border-radius: 0 0 5px 5px;
+	box-shadow: 0px 5px 10px 1px #777777;
+	padding: 0px;
+	position: absolute;
+	top: 39px;
+	left: 0px;
+	z-index: 999;
+}
+ul#categoriesBox li {
+	display: block;
+	float: left;
+	margin: 15px 28px;
+}
+ul#categoriesBox li a {
+	color: #023469;
+	text-align: center;
+	padding: 10px 0px;
+	display: block;
+	width: 110px;
+}
+ul#categoriesBox li a:hover {
+	background-color: #023469;
+	border-radius: 5px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.bootstrap-tagsinput {
+	border-radius: 0px;
+	height: 40px;
+	margin: 0;
+	overflow: hidden;
+	width: 100%;
+}
+.bootstrap-tagsinput .tag {
+	background-color: #023469;
+    display: block;
+    float: left;
+    font-size: 12px;
+    margin: 7px 2px 2px 0;
+}
+
 #fazerLogin {
 	position: relative;
 }
-.btnVermelho {
-	margin: 35px 0;
-}
-.btnVermelho a {
-	background-image: linear-gradient(to bottom, #E70000, #C90F0F);
-	border: 2px solid #CA0E0E;
-	border-radius: 5px;
-	color: #FFFFFF;
-	display: block;
-	font-weight: bold;
-	height: 40px;
-	padding: 8px;
-	text-align: center;
-	width: 100%;
-}
-.btnVermelho a:hover {
-	background-image: linear-gradient(to bottom, #C90F0F, #E70000);
-	text-decoration: none;
+#botaoLogin {
+	margin-top: 25px;
 }
 #botaoLogin a {
 	float: right;
-	height: 41px;
+	padding: 10px 40px;
 }
-#formularioLogin {
-    background-color: #f8f8f8;
+#formularioLogin, #menuUsuario, #menuUsuarioComLoja {
+    background-color: #F8F8F8;
     border-radius: 5px;
     box-shadow: 0px 5px 10px 1px #777777;
     height: auto;
     padding: 10px 20px;
     position: absolute;
-    right: 43px;
-    top: 77px;
+    right: 20px;
+    top: 68px;
     width: 350px;
     z-index: 999;
+}
+#menuUsuario, #menuUsuarioComLoja {
+	right: 0;
+	top: 50px;
+	width: 200px;
+}
+#menuUsuarioComLoja {
+	min-width: 250px;
+}
+.trocaDeUsuario {
+	border-bottom: 1px solid #AAAAAA;
+	clear: both;
+	display: block;
+	float: left;
+	margin-bottom: 10px;
+	padding-bottom: 7px; 
+	width: 100%;
+}
+.trocaDeUsuario p {
+	display: block;
+	float: left;
+	width: 70px;
+}
+.trocaDeUsuario .usuarioOuLoja {
+	display: block;
+	float: left;
+}
+.trocaDeUsuario .usuarioOuLoja li {
+	display: block;
+	margin: 0 3px;
+	float: left;
+}
+.menuUsuario, .menuUsuarioComLoja {
+	margin: 0;
+	padding: 0;
+}
+.menuUsuarioComLoja {
+	margin-top: 5px;
+}
+.menuUsuario li, .menuUsuarioComLoja li {
+	padding: 7px 0;
 }
 #formularioLogin img {
 	margin: 20px auto;
     width: 150px;
+}
+#formularioLogin .entrarComFacebook img {
+	margin: 0 0 15px 0;
+	width: 175px;
 }
 #formularioLogin .formularioLogin input {
 	border: 1px solid #DEDEDE;
@@ -100,7 +201,6 @@ header {
 	border-radius: 5px;
 	float: left;
 }
-
 #formularioLogin label {
 	color: #777777;
 	float: left;
@@ -132,47 +232,10 @@ header {
 #formularioLogin .outrasOpcoesLogin a:hover {
 	text-decoration: none;
 }
-#formularioLogin .outrasOpcoesLogin a#aindaNaoCadastrou {
-	border-bottom: 1px solid #C90F0F;
-}
 
-
-#barraDeBuscaLogado {
-	border: 1px solid #DEDEDE;
-	border-radius: 5px;
-	margin: 35px 0;
-	padding: 0px;
-}
-#barraDeBuscaLogado input {
-	border: none;
-	display: block;
-	float: left;
-	margin: 1px;
-	padding: 9px 10px;
-	width: 75%;
-}
-#barraDeBuscaLogado #stylishSelect {
-    background: url("../img/select-arrow.png") no-repeat scroll 125px center #CA0E0E; /* novo ícone para o <select> */
-    border-radius: 0px 5px 5px 0;
-    color: #FFFFFF;
-    overflow: hidden;
-}
-#barraDeBuscaLogado #stylishSelect select#selectCidadeBusca {
-	background: transparent; /* importante para exibir o novo ícone */
-	border: 0;
-    border-radius: 0;
-    cursor: pointer;
-	display: block;
-	float: left;
-	font-size: 15px;
-	height: 40px;
-	line-height: 1;
-    padding: 5px;
-    -webkit-appearance: none;
-    width: 120%
-}
 #dadosUsuario {
-	margin: 35px 0;
+	margin: 25px 0px 15px;
+	padding: 0 25px;
 }
 #dadosUsuario .meuArmario,
 #dadosUsuario .meuPerfil {
@@ -187,14 +250,19 @@ header {
 #dadosUsuario .meuPerfil a:hover p {
 	text-decoration: underline;
 }
+.imagemTrocarParaUsuario, .imagemTrocarParaLoja,
 #dadosUsuario .meuPerfil .imagemPerfilUsuario {
 	border: 1px solid #DEDEDE;
-	border-radius: 23px;
+	border-radius: 50%;
 	display: block;
 	float: left;
 	height: 45px;
 	overflow: hidden;
 	width: 45px;
+}
+.imagemTrocarParaUsuario, .imagemTrocarParaLoja {
+	height: 40px;
+	width: 40px;
 }
 #dadosUsuario .meuPerfil .nomePerfilUsuario {
 	padding: 10px 0px;
@@ -218,16 +286,18 @@ footer {
 }
 
 #conteudoTopoHome {
-	border-bottom: 1px solid #CA0E0E;
+	display: block;
+	margin: 30px 0 20px;
+}
+#conteudoTopoHome h1 {
+	color: #023469;
+	font-size: 36px;
+	text-align: center;
 }
 #conteudoTopoHome h2 {
 	color: #023469;
 	font-size: 24px;
 	text-align: center;
-}
-#conteudoTopoHome #botaoCadastre-se {
-	margin: 20px auto;
-	width: 250px;
 }
 #conteudoTopoHome p {
 	font-size: 14px;
@@ -239,6 +309,14 @@ footer {
 }
 #conteudoTopoHome p a:hover {
 	color: rgb(170,0,0);
+}
+#botaoCadastre-se {
+    display: block;
+    margin: 30px 0 0;
+	text-align: center;
+}
+#botaoCadastre-se a {
+	padding: 10px 40px;
 }
 
 #slide {
@@ -271,15 +349,15 @@ footer {
     box-shadow: 0px 0px 3px 0px #AAAAAA;
     display: block;
     height: 360px;
-    margin: 10px 20px 30px;
+    margin: 10px 16px 20px;
     padding: 0;
     position: relative;
-    width: 235px;
+    width: 230px;
 }
 .peca .imgPeca {
 	border-radius: 7px;
 }
-.peca .tituloPeca {
+.peca .topoPeca {
 	background-color: rgba(255,255,255,0.5);
 	border-radius: 7px 7px 0 0;
 	display: block;
@@ -288,97 +366,299 @@ footer {
 	top: 0px;
 	left: 0px;
 	width: 100%;
+	/*-webkit-filter: blur(5px);
+	filter: blur(5px);*/
 }
-.peca .tituloPeca img.logoDaMarca {
+.peca .topoPeca img.logoDaMarca {
 	border-radius: 15px;
 	display: block;
 	float: left;
     margin: 7px 10px;
 }
-.peca .tituloPeca a h2 {
+.peca .topoPeca .tituloPeca {
+	display: block;
+	float: left;
+	width: 80%;
+}
+.peca .topoPeca a h2 {
 	color: #3D3D3D;
     display: block;
     float: left;
     font-size: 20px;
-    margin: 10px 0;
+    margin: 3px 0 0;
 }
-.peca .tituloPeca a:hover h2 {
+.peca .topoPeca a:hover h2 {
 	color: #111111;
 }
-.peca .tituloPeca img.addAoArmario {
+.peca .topoPeca p {
+	display: block;
+    float: left;
+    font-size: 10px;
+    left: 51px;
+    margin: 0;
+    position: absolute;
+    top: 25px;
+}
+.peca .topoPeca .linkAddArmario {
+    display: block;
+    float: right;
+    width: 20%;
+}
+.peca .topoPeca .linkAddArmario img.addAoArmario {
 	border-radius: 7px;
 	display: block;
 	float: right;
 	margin: 7px 10px;
 }
 .peca .descricaoPeca {
-	background-image: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
-	border-radius: 0 0 7px 7px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+    border-radius: 0 0 7px 7px;
     bottom: 0;
+    color: #ffffff;
     display: block;
     height: 200px;
+    padding: 65px 10px 0;
     position: absolute;
 }
-.peca .descricaoPeca h3 {
-	color: #FFFFFF;
-    font: normal 16px 'Open Sans';
-    margin: 120px 10px 0;
-    width: 80%;
-}
-.peca .descricaoPeca .prevDadosPeca {
-	background: url("../img/bg-dados-peca.png") no-repeat scroll 0 0 transparent;
-	bottom: 0;
-	border-radius: 0 0px 7px 0px;
-	display: block;
-	height: 50px;
-	position: absolute;
-	right: 0;
-	width: 50px;
-}
 .peca .descricaoPeca .dadosPeca {
-	background-color: #39B54A;
-	border-radius: 0 0 7px 7px;
-	bottom: 0;
-	height: 85px;
-	position: absolute;
-	width: 100%;
+	background-color: transparent;
+    border-radius: 0 0 7px 7px;
+    bottom: 15px;
+    position: absolute;
+    width: 90%;
 }
 .peca .descricaoPeca .dadosPeca .localizacaoPeca {
 	display: block;
-    float: left;
-    padding: 18px 0 0 10px;
+    margin: 0 auto;
 }
-.peca .descricaoPeca .dadosPeca .precoPeca {
-	border: 1px solid #FFFFFF;
-    border-radius: 50%;
-    color: #ffffff;
+#botaoLogarFacebook {
     display: block;
-    float: left;
-    height: 50px;
-    margin: 18px 18px 0;
-    padding: 4px;
-    text-align: center;
-    width: 50px;
+    margin: 0 auto 10px;
+    width: 220px;
 }
-.peca .descricaoPeca .dadosPeca .precoPeca p {
-	font-size: 12px;
+.formCadastro, .formAlterarSenha {
+	display: block;
+	margin: 0 auto;
+	max-width: 650px;
 }
-.peca .descricaoPeca .dadosPeca .precoPeca p span {
-	font-size: 16px;
-	font-weight: bold;
+.formCadastro input, .formCadastro select, .formAlterarSenha input {
+	border-radius: 5px;
+	border: 1px solid #F0F0F0;
+	margin: 10px 0px;
+	height: 30px;
 }
-.peca .descricaoPeca .dadosPeca .aprovaramDesaprovaramPeca {
+.formCadastro input#submitBtn, .formCadastro input#saveChanges, .formCadastro input#changePassword, .formCadastro input#cancelChanges,
+.formAlterarSenha input#savePasswordChanges, .formAlterarSenha input#cancelPasswordChanges {
+	margin: 0 auto;
+	height: auto;
+	display: block;
+	padding: 10px 40px;
+	border: none;
+	margin-bottom: 20px;
+	width: 300px;
+}
+#CheckNewsletter, #CheckPolicy {
+    display: block;
+	float: left;
+	height: 15px;
+	margin: 2px 10px 0 0;
+	padding: 0;
+	width: auto;
+}
+.CheckNewsletter, .CheckPolicy {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    margin: 0;
+}
+.formCadastro button {
+	background-image: linear-gradient(to bottom, #E70000, #C90F0F);
+	border: 2px solid #CA0E0E;
+	border-radius: 5px;
 	color: #FFFFFF;
+	display: block;
+	font-weight: bold;
+	height: 40px;
+	text-align: center;
+	text-shadow: none;
+	width: 100%;
+}
+.formCadastro button:hover, .formCadastro button:focus {
+	background-image: linear-gradient(to bottom, #C90F0F, #E70000);
+	background-position: 0 center;
+	border: 2px solid #CA0E0E;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#contentRecoveryPassword {
+	display: block;
+    float: none;
+    margin: 0 auto;	
+    text-align: center;
+}
+#usuarioEncontrado {
+	margin: 20px 0;
+}
+.imagemUsuarioEncontrado {
+	border: 1px solid #DEDEDE;
+    border-radius: 50px;
+    display: block;
+    height: 100px;
+    margin: 0 auto 10px;
+    overflow: hidden;
+    width: 100px;
+}
+.nomeUsuarioEncontrado {
+	display: block;
+	font: normal 20px 'Arial';
+}
+
+#pagina404 {
+	display: block;
+	float: none;
+	margin: 50px auto;
+	width: 50%;
+}
+
+#topoLoja {
+	background-color: #F0F0F0;
+	display: block;
+	margin-bottom: 30px;
+	padding: 0 65px;
+}
+.logotipoLoja {
+	border: 1px solid #DEDEDE;
+    border-radius: 50%;
     display: block;
     float: left;
-    font: normal 11px/15px 'Open Sans';
-    margin: 10px 0;
-    width: 87px;
+    margin: 20px 40px 20px 0;
+    overflow: hidden;
+    width: 150px;
 }
-.peca .descricaoPeca .dadosPeca .aprovaramDesaprovaramPeca p {
-	margin: 0;
+.linksMidiasSociais {
+	display: block;
+	margin-top: 5px;
 }
-.peca .descricaoPeca .dadosPeca .aprovaramDesaprovaramPeca p span {
-	font-size: 16px;
-	font-weight: bold;
+.linksMidiasSociais a {
+	color: #777777;
+	font-size: 40px;
+	margin-right: 10px;
+}
+.linksMidiasSociais a:hover .fa-facebook-square {color: #3C599F;}
+.linksMidiasSociais a:hover .fa-twitter-square {color: #58CCFF;}
+.linksMidiasSociais a:hover .fa-pinterest-square {color: #CC2127;}
+.linksMidiasSociais a:hover .fa-linkedin-square {color: #007BB6;}
+.linksMidiasSociais a:hover .fa-google-plus-square {color: #DA2713;}
+.linksMidiasSociais a:hover .fa-instagram {color: #E1D4C4;}
+.linksMidiasSociais a:hover .fa-youtube-square {color: #B90000;}
+.linksMidiasSociais a:hover .fa-tumblr-square {color: #3D5A70;}
+.linksMidiasSociais a:hover .fa-blogger {color: #F78D20;}
+.linksMidiasSociais a:hover .fa-flickr {color: #EE5196;}
+
+.modal-localizacao-peca {
+	overflow: hidden;
+}
+.modal-localizacao-peca img {
+	border-bottom: 2px solid #DEDEDE;
+}
+#dadosLocalizacaoLoja img {
+	border: none;
+}
+#dadosLocalizacaoLoja p {
+	color: #000000;
+}
+.logoLocalizacaoDaLoja {
+	border-radius: 50%;
+    display: block;
+    float: left;
+    height: 150px;
+    margin: 30px 20px 30px 50px;
+    overflow: hidden;
+    width: 150px;
+} 
+.dadosPecaNaLoja {
+	color: #000;
+	display: block;
+	float: left;
+	margin-top: 10px;
+}
+.curtirComFacebook a {
+	display: block;
+	float: left;
+	margin-right: 10px;
+}
+.curtirComFacebook p {
+    font-size: 16px;
+}
+.enderecoLocalizacaoLoja {
+	margin: 50px;
+}
+.enderecoLocalizacaoLoja p {
+	margin: 5px;
+	font-size: 14px;
+}
+.modalCadastro .modal-header {
+	text-align: center;
+}
+.modalCadastro .modal-footer .btn-lojista {
+	float: left;
+	width: 45%;
+}
+.modalCadastro .modal-footer .btn-concluir {
+	width: 45%;
+}
+.tituloPagina {
+	margin-bottom: 25px;
+}
+.tituloPagina h1 {
+	text-align: center;
+}
+.tituloPagina img {
+	margin-right: 10px;
+}
+
+#navegacaoTopo {
+	background-color: #F0F0F0;
+	clear: both;
+	display: block;
+	height: 40px;
+}
+#navegacaoTopo ul li {
+	border-right: 1px solid #000000;
+	display: block;
+	float: left;
+	padding: 10px;
+	text-align: center;
+	min-width: 200px;
+}
+button {
+	text-decoration: none;
+}
+button:hover, .btn:focus, .btn:active {
+	text-decoration: none;
+}
+.btnLocalizacaoPeca, .btnRemoverPeca, .btnCurtirPeca {
+	border-radius: 50%;
+	display: block;
+	float: left;
+	font-size: 10px;
+	height: 60px;
+	margin: 0 auto;
+	text-align: center;
+	width: 60px;
+}
+.btnLocalHomeSemLog {
+	float: none;
+	margin: 0 auto;
+}
+.curtirPecaMeuArmario span {
+	color: #FFFFFF;
+	float: right;
+	font: bold 13px 'Arial';
+	margin: 2px 6px 0 0;
+	text-align: center;
+}
+.btnRemoverPeca {
+	margin: 0 13px;
 }

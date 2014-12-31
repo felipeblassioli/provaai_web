@@ -4,25 +4,38 @@
 {% block content %}
 {% from "common/_macros.html" import render_field %}
 
-Descubra que as lojas estão bem mais perto do que você imagina.
+<div id="conteudoTopoHome">
+    <h2>Descubra que as lojas estão bem mais perto do que você imagina.</h2>
+    <p>Preencha os campos abaixo para criar o cadastro</p>
+    <a href="#" title="Login com Facebook" id="botaoLogarFacebook">
+        <img src="{{ url_for('static', filename='img/login-facebook.png') }}" alt="Login at Prova Aí with Facebook" class="img-responsive">
+    </a>
+</div>
 
-<input type=button value="Entre com o Facebook" />
-Ou
-Preencha os campo abaixo para criar o cadastro
-<form method=post action="{{ url_for('register') }}">
-    {{ form.csrf_token }}
-    {{ render_field(form.name) }}
-    {{ render_field(form.last_name) }}
-    {{ render_field(form.age) }}
-    {{ render_field(form.email) }}
-    {{ render_field(form.email_confirm) }}
-    {{ render_field(form.password) }}
-    {{ render_field(form.confirm) }}
-    {{ render_field(form.address) }}
-    {{ render_field(form.city) }}
-    {{ render_field(form.zip_code) }}
-    {{ render_field(form.accept_news) }}
-    {{ render_field(form.accept_tos) }}
-    <input type="submit" value="Concluir Cadastro">
-</form>
+<div id="formularioDeCadastro">
+    <div class="container">
+        <div class="row">
+            <form role="form" id="formfield" action="{{ url_for('register') }}" method="post" class="formCadastro" id="registerForm" name="registerForm">
+                {{ form.csrf_token }}
+                {{ render_field(form.name, class='form-control') }}
+                {{ render_field(form.last_name) }}
+                {{ render_field(form.age) }}
+                {{ render_field(form.email) }}
+                {{ render_field(form.email_confirm) }}
+                {{ render_field(form.password) }}
+                {{ render_field(form.confirm) }}
+                {{ render_field(form.address) }}
+                {{ render_field(form.city) }}
+                {{ render_field(form.zip_code) }}
+                {{ render_field(form.accept_news, show_label=True) }}
+                {{ render_field(form.accept_tos, show_label=True) }}
+                <input type="button" name="btn" value="Concluir cadastro" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default btn-danger" />
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
 {% endblock %}

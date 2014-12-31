@@ -17,7 +17,7 @@ class Configuration(object):
 		'name': 'provaai',
 		'engine': 'peewee.MySQLDatabase',
 		'user': 'root',
-		'passwd': '123456'
+		'passwd': ''
 	}
 	#: Log file for the application
 	LOG_FILENAME = DIR_ROOT + '/provaai.log'

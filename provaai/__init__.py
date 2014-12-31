@@ -36,7 +36,7 @@ def setup_logging():
 
 __version__ = '2.0'
 
-app = Flask(__name__, static_url_path='')
+app = Flask(__name__)
 app.config.from_object('provaai.config.Configuration')
 app.config.from_envvar('PROVAAI_SETTINGS', silent=True)
 db = Database(app)
