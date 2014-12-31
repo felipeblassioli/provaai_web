@@ -15,7 +15,7 @@
 <div id="formularioDeCadastro">
     <div class="container">
         <div class="row">
-            <form role="form" id="formfield" action="{{ url_for('register') }}" method="post" class="formCadastro" id="registerForm" name="registerForm">
+            <form role="form" id="formfield" action="{{ url_for('register') }}" method="post" class="formCadastro" id="registerForm" name="registerForm" enctype='multipart/form-data'>
                 {{ form.csrf_token }}
                 {{ render_field(form.name, class='form-control') }}
                 {{ render_field(form.last_name) }}
@@ -27,8 +27,8 @@
                 {{ render_field(form.address) }}
                 {{ render_field(form.city) }}
                 {{ render_field(form.zip_code) }}
-                {{ render_field(form.accept_news, show_label=True) }}
-                {{ render_field(form.accept_tos, show_label=True) }}
+                {{ render_field(form.accept_news, show_label=True, class="checkbox") }}
+                {{ render_field(form.accept_tos, show_label=True, class="checkbox") }}
                 <input id="submitBtn" type="submit" value="Concluir cadastro" class="btn btn-default btn-danger" />
 
             </form>

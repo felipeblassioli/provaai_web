@@ -66,8 +66,8 @@ class StoreRegistrationForm(Form):
     zip_code = TextField(u'CEP')
     phone = TextField(u'Telefone')
     site = TextField(u'Site')
-    logo = FileField(u'Logotipo', validators=[
-            FileAllowed(images_manager, u'Imagem Inválida')
+    logo_img = FileField(u'Logotipo', validators=[
+        FileAllowed(images_manager, u'Imagem Inválida')
     ])
     description = TextAreaField(u'Descrição')
     perma_link = TextField(u'suamarca')

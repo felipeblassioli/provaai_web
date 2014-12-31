@@ -157,7 +157,32 @@ class StoreView(FlaskView):
     def register_store(self):
         form = StoreRegistrationForm()
         if form.validate_on_submit():
-            print "Success"
+            print "Success", current_user, type(current_user)
+            addr = form.address.data +', '+form.number.data+', '+form.state.data+', '+form.city.data
+            #print form.logo_img.data
+            #print form.logo_img.data.filename
+            print 'files', request.files
+            if form.logo_img.has_file:
+                print form.logo_img
+                print form.logo_img.data, type(form.logo_img.data)
+                filename = images_manager.save(form.logo_img.data)
+                img = Image.create(
+                    filename=filename,
+                    url=images_manager.url(filename)
+                )
+            else:
+                img = None
+            params = dict(
+                owner = User.get(User.id == current_user.id),
+                name = form.name.data,
+                perma_link = form.perma_link.data,
+                address = addr,
+                zip_code = form.zip_code.data,
+                site = form.site.data,
+                logo = img
+            )
+            print params
+            Store.create(**params)
             return _redirect('StoreView:index')
         return _render_template(
             'store/register.html',

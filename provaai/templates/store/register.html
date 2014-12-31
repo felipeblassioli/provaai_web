@@ -1,62 +1,80 @@
 {% extends "common/base.html" %}
-{% block title %}Register{% endblock %}
+
+{% block title %}Registrar{% endblock %}
+
 {% block head %}
     {{ super() }}
     <style type="text/css">
         .important { color: #336699; }
     </style>
 {% endblock %}
+
 {% block content %}
 {% from "common/_macros.html" import render_field %}
 
-<!-- Content Header -->
-<header>
-    Etapa 1
-    Categoria
+<div class="container">
+    <div class="row">
+        <!-- Content Header -->
+<!--         <header>
+            Etapa 1
+            Categoria
 
-    Etapa 2
-    Descrição da loja
+            Etapa 2
+            Descrição da loja
 
-    Etapa 3
-    Cadastro de Redes sociais
+            Etapa 3
+            Cadastro de Redes sociais
 
-    <h1>Lojista, bem vindo ao Prova Ai.</h1>
-    <h2>Milhões de usuários estão esperando para conhecer sua loja.</h2>
-</header>
+            <h1>Lojista, bem vindo ao Prova Ai.</h1>
+            <h2>Milhões de usuários estão esperando para conhecer sua loja.</h2>
+        </header> -->
 
-<!-- Content Body -->
-<div id="step_1">
-    <h3>Selecione o tipo de sua loja:</h3>
-    <button>Loja de Shopping</button>
-    <button>Loja de Rua</button>
-</div>
+        <!-- Content Body -->
+    <!--     <div id="step_1">
+            <h3>Selecione o tipo de sua loja:</h3>
+            <button>Loja de Shopping</button>
+            <button>Loja de Rua</button>
+        </div>  --><!-- step 1 -->
 
-<div id="step_2">
-    <h3>Preencha os campos abaixo para criar sua loja.</h3>
-    <form method=post action="{{ url_for('StoreView:register_store') }}">
-      <dl>
-        {{ render_field(form.category) }}
-        {{ render_field(form.name) }}
-        {{ render_field(form.address) }}
-        {{ render_field(form.number) }} {{ render_field(form.extra) }}
-        {{ render_field(form.state) }} {{ render_field(form.city) }}
-        {{ render_field(form.zip_code) }} {{ render_field(form.phone) }}
-        {{ render_field(form.site) }}
-        {{ render_field(form.logo) }}
-        {{ render_field(form.description) }}
-        {{ render_field(form.perma_link) }}
-      </dl>
-      {{ form.hidden_tag() }}
-      <input type="submit" value="Register">
-    </form>
-</div>
+        <div id="step_2">
+            <h3>Preencha os campos abaixo para criar sua loja.</h3>
+            <form method=post action="{{ url_for('StoreView:register_store') }}" enctype='multipart/form-data'>
+                {{ render_field(form.category) }}
+                {{ render_field(form.name) }}
+                {{ render_field(form.address) }}
+                {{ render_field(form.number) }} {{ render_field(form.extra) }}
+                {{ render_field(form.state) }} {{ render_field(form.city) }}
+                {{ render_field(form.zip_code) }} {{ render_field(form.phone) }}
+                {{ render_field(form.site) }}
+                {{ render_field(form.logo_img, show_label=True, class='', onchange='PreviewImage()') }}
+                <img id="uploadPreview" style="width: 100px; height: 100px;" />
+                {{ render_field(form.description) }}
+                {{ render_field(form.perma_link) }}
+              {{ form.hidden_tag() }}
+              <input type="submit" value="Register">
+            </form>
+        </div> <!-- step 2 -->
+        <!-- <div id="step_3">
+            Redes Sociais
+        </div> --> <!-- step 3 -->
 
-<div id="step_3">
-    Redes Sociais
-</div>
+        <!-- Content Footer -->
+<!--         <footer>
+            <button id="bt_next">Próxima Etapa</button>
+        </footer> -->
 
-<!-- Content Footer -->
-<footer>
-    <button id="bt_next">Próxima Etapa</button>
-</footer>
+    </div> <!-- row -->
+</div> <!-- container -->
+{% endblock %}
+
+{% block tail %}
+<script type="text/javascript">
+    function PreviewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("logo_img").files[0]);
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+        };
+    };
+</script>
 {% endblock %}

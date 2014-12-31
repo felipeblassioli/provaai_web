@@ -31,7 +31,7 @@
 {% else %}
     <div style="display: none;" id="menuUsuario">
         <ul class="menuUsuario">
-            <li><a href="/store-register.html" title="Criar uma loja">Criar uma loja</a></li>
+            <li><a href="{{ url_for('StoreView:register_store') }}" title="Criar uma loja">Criar uma loja</a></li>
             <li><a href="/closet.html" title="Meu armário">Meu armário</a></li>
             <li><a href="/user-settings.html" title="Configurações">Configurações</a></li>
             <li><a href="{{ url_for('logout') }}" title="Sair">Sair</a></li>

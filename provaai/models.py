@@ -47,7 +47,12 @@ class Store(BaseModel):
 	owner = ForeignKeyField(User)
 	logo = ForeignKeyField(Image, null=True)
 	name = CharField()
+	address = CharField()
+	zip_code = CharField()
+	site = CharField()
 	description = TextField(null=True)
+	perma_link = CharField()
+
 	@property
 	def showcase(self):
 		return [ c for c in Cloth.select().where((Cloth.store == self)&(Cloth.in_showcase == True)) ]
