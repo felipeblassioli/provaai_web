@@ -1,10 +1,6 @@
 {% extends "common/base.html" %}
+
 {% block title %}Minha Loja{% endblock %}
-
-{% block head %}
-    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
-{% endblock %}
-
 
 {% macro render_cloth(cloth) %}
   <li class="peca col-xs-12 col-sm-4 col-md-4 col-lg-3">
@@ -46,39 +42,39 @@
 {% endmacro %}
 
 {% block content %}
+    <div id="header" class="container" style="margin-top: 3em;">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <input class='form-control' type="text" value="{{ store.name }}" />
+                    <textarea class='form-control'>{{ store.description }}</textarea>
+                </div>
+            </div>
 
-<header>
-    <input type="text" value="{{ store.name }}" />
-    <textarea>{{ store.description }}</textarea>
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a href="#" class="list-group-item">Configurações</a>
+                    <a href="#" class="list-group-item" onclick="showAddCloth();">Adicionar uma peça</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <ul>
-        <li>Configurações</li>
-        <li><a onclick="showAddClothDialog();">Adicionar uma peça</a></li>
-    </ul>
-</header>
-<section>
+    <hr />
+
+
     <ul class="listaPecas">
         {% for cloth in showcase %}
             {{ render_cloth(cloth) }}
         {% endfor %}
     </ul>
+{% endblock %}
 
-    {% include 'store/add_cloth.html' %}
-</section>
-
-
-<script>
-    function showAddClothDialog() {
-        $( "#dialog_add_cloth" ).dialog({
-            autoOpen: true,
-            modal: true,
-            position: 'center' ,
-            draggable: false,
-            minWidth: 600,
-            open: function() {
-                $('.ui-dialog-titlebar-close').bind('click', function() {});
-            }
-        });
-    }
-</script>
+{% block tail %}
+    {% include 'store/modal_add_cloth.html' %}
+    <script>
+        function showAddCloth(){
+            $('#dialog').modal('show');
+        }
+    </script>
 {% endblock %}

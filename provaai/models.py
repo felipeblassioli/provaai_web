@@ -44,7 +44,7 @@ class User(BaseModel, UserMixin):
 		return self.store is not None
 
 class Store(BaseModel):
-	owner = ForeignKeyField(User)
+	owner = ForeignKeyField(User, related_name='stores')
 	logo = ForeignKeyField(Image, null=True)
 	name = CharField()
 	address = CharField()

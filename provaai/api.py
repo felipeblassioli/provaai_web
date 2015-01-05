@@ -40,6 +40,19 @@ def authenticate(email,pwd):
         pass
     return None
 
+from flask import abort
+@app.route('/<path:path>')
+def catch_all(path):
+    try:
+        store = Store.get(Store.perma_link == path.lower())
+        # Flask-classy`s make_proxy method uses request.view_args and accepts no params
+        request.view_args.pop('path')
+        request.view_args['id'] = store.id
+        return app.view_functions['StoreView:edit']()
+    except Store.DoesNotExist:
+        pass
+    return abort(404)
+
 @app.route('/', methods=['GET'], endpoint="index")
 def index():
     showcase = Cloth.select()
@@ -59,6 +72,8 @@ def index():
         store=store,
         showcase = showcase
     )
+
+
 
 @app.route("/login/", methods=["GET", "POST"])
 def login():
@@ -116,42 +131,45 @@ def setup():
     Brand.create(name="Nike")
     return "Ok"
 
-@app.route('/upload/', methods=('GET', 'POST'))
-def upload():
-    form = PhotoForm()
-    print "validate", form.validate_on_submit()
-    if form.validate_on_submit():
-        print "Success"
-        print "photo", form.photo
-        print form.photo.data
-        print form.photo.data.filename
-        filename = images_manager.save(form.photo.data)
-        return filename
-    else:
-        print 'FAILEEEEEEEEEEEEEEEEEEEED'
-        filename = None
-    return _render_template('upload.html', form=form, filename=filename)
-
-@app.route('/welcome/')
-def welcome():
-    return render_template('welcome.html')
-
 class StoreView(FlaskView):
+    route_base = '/store/<int:id>/'
+
     def welcome(self):
         return render_template('store/welcome.html')
-        
-    @login_required
-    def index(self):
+    
+    def index(self,id):
         formAddCloth = AddClothForm()
-        showcase = current_user.store.showcase
+        current_store = Store.get(Store.id == id)
+
         return _render_template(
             'store/main.html',
-            store=current_user.store,
-            showcase=showcase,
+            store=current_store,
+            showcase=current_store.showcase,
             form=dict(
                 add_cloth=formAddCloth
             )
         )
+
+    @login_required
+    def edit(self, id):
+        current_store = Store.get(Store.id == id)
+        return _render_template(
+            'store/edit.html',
+            store=current_store,
+            form=dict(
+                add_cloth=AddClothForm()
+            )
+        )
+
+    @login_required
+    def settings(self, id):
+        store = current_user.store
+        form = StoreRegistrationForm(user)
+        if form.validate_on_submit():
+            form.populate_obj(user)
+            user.save()
+            redirect('edit_profile')
+        return render_response('edit_profile.html', form=form)
 
     @route('/register/', methods=['GET','POST'])
     def register_store(self):
@@ -191,7 +209,8 @@ class StoreView(FlaskView):
         
     @login_required
     @route('/add/', methods=['POST'])
-    def add(self):
+    def add(self,id):
+        store = Store.get(Store.id == id)
         form = AddClothForm()
         if form.validate_on_submit():
             print "Success"
@@ -204,7 +223,7 @@ class StoreView(FlaskView):
                 url=images_manager.url(filename)
             )
             cloth = Cloth.create(
-                store = current_user.store,
+                store = store,
                 image = img,
                 name = form.name.data,
                 description = form.description.data,
@@ -221,3 +240,5 @@ StoreView.register(app)
 from flask.ext.admin.contrib.peewee import ModelView
 for m in [User,Store,Cloth]:
     admin.add_view(ModelView(m))
+
+print app.url_map

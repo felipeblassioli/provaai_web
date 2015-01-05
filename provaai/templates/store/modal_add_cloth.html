@@ -1,0 +1,47 @@
+{% extends "common/modal.html" %}
+
+{% from "common/_macros.html" import render_field %}
+
+{% block modal_title %} Edite sua peça {% endblock %}
+
+{% block modal_body %}
+	<div class="row">
+		<div class="col-md-6">
+			<form id="form_add_cloth">
+				{{ render_field(form['add_cloth'].name) }}
+				{{ render_field(form['add_cloth'].color) }}
+				{{ render_field(form['add_cloth'].brand) }}
+				{{ render_field(form['add_cloth'].price) }}
+				{{ render_field(form['add_cloth'].fullname) }}
+				{{ render_field(form['add_cloth'].description) }}
+				{{ render_field(form['add_cloth'].photo,onchange='PreviewImage()') }}
+				{{ render_field(form['add_cloth'].category) }}
+				{{ render_field(form['add_cloth'].sex) }}
+				{{ render_field(form['add_cloth'].favorite) }}
+				{{ form['add_cloth'].hidden_tag() }}
+			</form>
+		</div>
+		<div class="col-md-6">
+
+			<div class="peca">
+				<img id="uploadPreview" class="img-responsive" />
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function PreviewImage() {
+	        var oFReader = new FileReader();
+	        oFReader.readAsDataURL(document.getElementById("photo").files[0]);
+
+	        oFReader.onload = function (oFREvent) {
+	            document.getElementById("uploadPreview").src = oFREvent.target.result;
+	        };
+	    };
+	</script>
+{% endblock %}
+
+{% block modal_footer %}
+	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	<button type="submit" class="btn btn-primary" form="form_add_cloth" formaction="{{ url_for('StoreView:add', id=store.id) }}" formmethod="post" formenctype="multipart/form-data">publicar peça</button>
+{% endblock %}
