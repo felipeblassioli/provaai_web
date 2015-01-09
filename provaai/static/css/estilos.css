@@ -809,3 +809,6 @@ button:hover, .btn:focus, .btn:active {
 .produto.disabled:hover {
   opacity: 1;
 }
+ul.errors li {
+	color: #F00;
+}

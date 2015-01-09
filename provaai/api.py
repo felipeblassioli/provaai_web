@@ -92,11 +92,6 @@ def login():
         form=form
     )
 
-@app.route("/settings")
-@login_required
-def settings():
-    return "Hello bro, "+current_user.name
-
 @app.route("/logout")
 @login_required
 def logout():
@@ -105,10 +100,16 @@ def logout():
 
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
-    print request.method, request.form
-    form = RegistrationForm(request.form)
-    print 'validate', form.validate_on_submit()
+    form = RegistrationForm()
     if form.validate_on_submit():
+        if form.profile_photo.has_file():
+            filename = images_manager.save(form.profile_photo.data)
+            img = Image.create(
+                filename=filename,
+                url=images_manager.url(filename)
+            )
+        else:
+            img = current_user.profile_photo
         params = dict(
             name = form.name.data,
             last_name = form.last_name.data,
@@ -116,14 +117,52 @@ def register():
             email = form.email.data,
             password = form.password.data,
             address = form.address.data,
-            accept_news = form.accept_news.data
+            accept_news = form.accept_news.data,
+            profile_photo = img
         )
         usr = User.create(**params)
         #Store.create(owner=usr,name="Loja Teste")
         login_user(usr)
-        print jsonify(params)
         return _redirect("index")
-    return _render_template('register.html', form=form)
+    return _render_template('user/register.html', form=form)
+
+@login_required
+@app.route('/store/register/', methods=['GET','POST'], endpoint='register_store')
+def register_store():
+    form = StoreRegistrationForm()
+    if form.validate_on_submit():
+        print "Success", current_user, type(current_user)
+        addr = form.address.data +', '+form.number.data+', '+form.state.data+', '+form.city.data
+        #print form.logo_img.data
+        #print form.logo_img.data.filename
+        print 'files', request.files
+        if form.logo_img.has_file:
+            print form.logo_img
+            print form.logo_img.data, type(form.logo_img.data)
+            filename = images_manager.save(form.logo_img.data)
+            img = Image.create(
+                filename=filename,
+                url=images_manager.url(filename)
+            )
+        else:
+            img = None
+        params = dict(
+            owner = User.get(User.id == current_user.id),
+            name = form.name.data,
+            perma_link = form.perma_link.data,
+            address = addr,
+            zip_code = form.zip_code.data,
+            site = form.site.data,
+            logo = img
+        )
+        print params
+        s = Store.create(**params)
+        return _redirect('StoreView:index', id=s.id)
+    return _render_template(
+        'store/register.html',
+        form=form
+    )
+
 
 @app.route('/setup/', methods=['GET'])
 def setup():
@@ -142,6 +181,31 @@ def setup():
         for s in subcategories:
             Category.create(name=s,parent=c.id)
     return "Ok"
+
+class UserView(FlaskView):
+
+    @login_required
+    @route('/settings/', methods=['GET','POST'])
+    def settings(self):
+        form = RegistrationForm(obj=current_user)
+        form.accept_tos.validators = []
+        form.password.validators = []
+        if form.validate_on_submit():
+            form.populate_obj(current_user)
+            current_user.save()
+        return _render_template('user/settings.html',form=form)
+
+    @login_required
+    def add(self):
+        pass
+
+    @login_required
+    def closet(self):
+        pass
+
+    @login_required
+    def change_password(self):
+        pass
 
 class StoreView(FlaskView):
     route_base = '/store/<int:id>/'
@@ -184,42 +248,6 @@ class StoreView(FlaskView):
             #_redirect('StoreView:settings', id=id)
             #render_response('store/settings.html', form=form)
         return _render_template('store/settings.html', store=store, form=form)
-
-    @route('/register/', methods=['GET','POST'])
-    def register_store(self):
-        form = StoreRegistrationForm()
-        if form.validate_on_submit():
-            print "Success", current_user, type(current_user)
-            addr = form.address.data +', '+form.number.data+', '+form.state.data+', '+form.city.data
-            #print form.logo_img.data
-            #print form.logo_img.data.filename
-            print 'files', request.files
-            if form.logo_img.has_file:
-                print form.logo_img
-                print form.logo_img.data, type(form.logo_img.data)
-                filename = images_manager.save(form.logo_img.data)
-                img = Image.create(
-                    filename=filename,
-                    url=images_manager.url(filename)
-                )
-            else:
-                img = None
-            params = dict(
-                owner = User.get(User.id == current_user.id),
-                name = form.name.data,
-                perma_link = form.perma_link.data,
-                address = addr,
-                zip_code = form.zip_code.data,
-                site = form.site.data,
-                logo = img
-            )
-            print params
-            Store.create(**params)
-            return _redirect('StoreView:index')
-        return _render_template(
-            'store/register.html',
-            form=form
-        )
         
     @login_required
     @route('/add/', methods=['POST'])
@@ -262,6 +290,7 @@ class StoreView(FlaskView):
             )
 
 StoreView.register(app)
+UserView.register(app)
 
 from flask.ext.admin.contrib.peewee import ModelView
 for m in [User,Store,Cloth,Category]:

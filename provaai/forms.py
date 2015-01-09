@@ -9,6 +9,21 @@ class LoginForm(Form):
     email = TextField(u'email')
     password = PasswordField(u'senha')
 
+
+from .models import Image
+class ProfilePhotoField(FileField):
+    def __init__(self,*args,**kwargs):
+        super(ProfilePhotoField,self).__init__(*args,**kwargs)
+
+    def populate_obj(self,obj,name):
+        if self.has_file():
+            filename = images_manager.save(self.data)
+            img = Image.create(
+                filename=filename,
+                url=images_manager.url(filename)
+            )
+            setattr(obj, name, img)
+
 class RegistrationForm(Form):
     name = TextField(u'Nome', [validators.Length(max=30),validators.Required()])
     last_name = TextField(u'Sobrenome', [validators.Required()])
@@ -28,6 +43,10 @@ class RegistrationForm(Form):
     zip_code = TextField(u'CEP')
     accept_news = BooleanField(u'Me manter informado sobre todas as informações e notícias do Prova Aí')
     accept_tos = BooleanField(u'Eu li e concordo com os termos de uso e a política de privacidade', [validators.Required()])
+
+    profile_photo = ProfilePhotoField(u'Foto de perfil', validators=[
+        FileAllowed(images_manager, u'Imagem Inválida')
+    ])
 
 class PhotoForm(Form):
     name = TextField(u'Nome', [validators.Required()])

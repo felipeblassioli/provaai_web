@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block content %}
-{% from "common/_macros.html" import render_field %}
+{% from "common/_macros.html" import render_field, render_raw_field %}
 
 <div class="container">
     <div class="row">
@@ -38,7 +38,7 @@
 
         <div id="step_2">
             <h3>Preencha os campos abaixo para criar sua loja.</h3>
-            <form method=post action="{{ url_for('StoreView:register_store') }}" enctype='multipart/form-data'>
+            <form method=post action="{{ url_for('register_store') }}" enctype='multipart/form-data'>
                 {{ render_field(form.category) }}
                 {{ render_field(form.name) }}
                 {{ render_field(form.address) }}
@@ -49,9 +49,16 @@
                 {{ render_field(form.logo_img, show_label=True, class='', onchange='PreviewImage()') }}
                 <img id="uploadPreview" style="width: 100px; height: 100px;" />
                 {{ render_field(form.description) }}
-                {{ render_field(form.perma_link) }}
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">www.provaai.com.br/</div>
+                        {{ render_raw_field(form.perma_link, class='form-control') }}
+                    </div>
+                </div>
+                
               {{ form.hidden_tag() }}
-              <input type="submit" value="Register">
+              <input type="submit" value="Register" class="btn btn-default btn-danger">
             </form>
         </div> <!-- step 2 -->
         <!-- <div id="step_3">

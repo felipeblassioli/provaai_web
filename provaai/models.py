@@ -31,6 +31,7 @@ class User(BaseModel, UserMixin):
 	address = CharField()
 	accept_news = BooleanField()
 	first_login = BooleanField(default=True)
+	profile_photo = ForeignKeyField(Image, null=True)
 
 	@property
 	def store(self):
@@ -78,7 +79,7 @@ class Category(BaseModel):
 	name = CharField()
 	parent = ForeignKeyField('self',null=True)
 
-MODELS=[User,Brand,Image,Store,Cloth, Category]
+MODELS=[Brand,Image,User,Store,Cloth, Category]
 def create_tables():
 	for m in MODELS:
 		m.create_table(True)

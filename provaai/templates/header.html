@@ -163,17 +163,17 @@
             </div> <!-- barraDeBuscaLogado -->
 
             <div id="dadosUsuario" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                <div class="meuArmario col-xs-4 col-sm-4 col-md-4 col-lg-2">
-                    <a href="/closet.html" title="Meu armário">
+                <!-- <div class="meuArmario col-xs-4 col-sm-4 col-md-4 col-lg-2">
+                    <a href="{{ url_for('UserView:closet') }}" title="Meu armário">
                         <img src="/img/meu-armario.png" alt="Meu Armário">
                     </a>
-                </div> <!-- meuArmario -->
+                </div> --> <!-- meuArmario -->
 
 
                 <div class="meuPerfil col-xs-8 col-sm-8 col-md-8 col-lg-10">
                     <a href="javascript:void(0);" title="Meu perfil" class="linkAcessarMenuUsuario">
                         <div class="imagemPerfilUsuario">
-                            <img src="/img/usuarios/melksedeque-de-souza-silva.jpg" alt="{{ user.name }}" class="img-responsive">
+                            <img src="{{ user.profile_photo.url }}" alt="{{ user.name }}" class="img-responsive">
                         </div>
                         <div class="nomePerfilUsuario">
                             <p> {{ user.name }}<i class="fa fa-caret-down"></i></p>

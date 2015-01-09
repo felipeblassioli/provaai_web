@@ -20,19 +20,20 @@
             </ul>
         </div>
         <ul class="menuUsuarioComLoja">
-            <li><a href="/store-edit.html" title="Criar uma loja">Administrar loja</a></li>
-            <li><a href="/closet.html" title="Meu armário">Meu armário</a></li>
-            <li><a href="/store-settings.html" title="Configurações da loja">Configurações da loja</a></li>
-            <li><a href="/user-settings.html" title="Configurações do usuário">Configurações do usuário</a></li>
+            <!-- <li><a href="/store-edit.html" title="Criar uma loja">Administrar loja</a></li> -->
+            <li><a href="{{ url_for('UserView:closet') }}" title="Meu armário">Meu armário</a></li>
+            <!-- <li><a href="/store-settings.html" title="Configurações da loja">Configurações da loja</a></li> -->
+            <li><a href="{{ url_for('UserView:settings') }}" title="Configurações do usuário">Configurações do usuário</a></li>
+            <li><a href="{{ url_for('register_store') }}" title="Adicionar nova loja">Adicionar nova loja</a></li>
             <li><a href="{{ url_for('logout') }}" title="Sair">Sair</a></li>
         </ul>
     </div> <!-- menuUsuarioComLoja -->
 {% else %}
     <div style="display: none;" id="menuUsuario">
         <ul class="menuUsuario">
-            <li><a href="{{ url_for('StoreView:register_store') }}" title="Criar uma loja">Criar uma loja</a></li>
-            <li><a href="/closet.html" title="Meu armário">Meu armário</a></li>
-            <li><a href="/user-settings.html" title="Configurações">Configurações</a></li>
+            <li><a href="{{ url_for('register_store') }}" title="Criar uma loja">Criar uma loja</a></li>
+            <li><a href="{{ url_for('UserView:closet') }}"  title="Meu armário">Meu armário</a></li>
+            <li><a href="{{ url_for('UserView:settings') }}" title="Configurações">Configurações</a></li>
             <li><a href="{{ url_for('logout') }}" title="Sair">Sair</a></li>
         </ul>
     </div> <!-- menuUsuario -->

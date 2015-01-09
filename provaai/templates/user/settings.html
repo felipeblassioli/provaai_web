@@ -1,0 +1,62 @@
+{% extends "common/base.html" %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+{% from "common/_macros.html" import render_field, render_raw_field %}
+
+<!-- <form action="" method="POST" role="form" class="validar formulario-cadastro"> -->
+<div class="container">
+	<div class="titulo-interno">
+		<h1>Configurações da conta</h1>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-lg-offset-2 col-sm-offset-2 col-md-offset-2">
+			<form action="{{ url_for('UserView:settings') }}" method="POST" role="form" class="validar formulario-cadastro" enctype='multipart/form-data'>
+	   <!--       <form role="form" id="formfield" action="{{ url_for('register') }}" method="post" class="formCadastro" id="registerForm" name="registerForm" enctype='multipart/form-data'> -->
+                {{ render_raw_field(form.profile_photo, show_label=True, onchange='PreviewImage()') }}
+                <img id="uploadPreview" class="img-responsive" style='width: 100px; height: 100px'/>
+				{{ render_field(form.name, show_label=True) }}
+				{{ render_field(form.last_name, show_label=True) }}
+				{{ render_field(form.age, show_label=True) }}
+				{{ render_field(form.email, show_label=True) }}
+                {{ render_field(form.email_confirm, show_label=True) }}
+				{{ render_field(form.address, show_label=True) }}
+				{{ render_field(form.city, show_label=True) }}
+				{{ render_field(form.zip_code, show_label=True) }}
+				{{ render_field(form.accept_news, show_label=True, class="checkbox") }}
+
+				{{ form.hidden_tag() }}
+
+				<div class="form-group concluir">
+					<div class="row">
+						<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+							<button type="submit" class="btn btn-success btn-lg btn-block">Salvar alterações</button>
+							<a class="btn btn-warning btn-lg btn-block" href="{{ url_for('UserView:change_password') }}">Alterar senha</a>
+							<a class="btn btn-danger btn-lg btn-block" href="{{ url_for('index') }}">Cancelar</a>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}
+
+{% block tail %}
+
+    <script type="text/javascript">
+        function PreviewImage() {
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("profile_photo").files[0]);
+
+            oFReader.onload = function (oFREvent) {
+                document.getElementById("uploadPreview").src = oFREvent.target.result;
+            };
+        };
+    </script>
+
+{% endblock %}
+
