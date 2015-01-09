@@ -662,3 +662,150 @@ button:hover, .btn:focus, .btn:active {
 .btnRemoverPeca {
 	margin: 0 13px;
 }
+
+.header-loja {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.header-loja h1 {
+  color: #023469;
+  font-weight: bold;
+  margin-top: 0px;
+}
+.midias {
+  margin: 0px;
+  padding: 0px;
+}
+.midias li {
+  margin: 10px 5px;
+  display: inline-block;
+}
+.midias li a {
+  font-size: 40px;
+  color: #666;
+  text-decoration: none;
+}
+.midias li.facebook a:hover {
+  color: #3C599F;
+}
+.midias li.twitter a:hover {
+  color: #58CCFF;
+}
+.midias li.pinterest a:hover {
+  color: #CC2127;
+}
+.midias li.linkedin a:hover {
+  color: #007BB6;
+}
+
+
+.titulo-interno {
+  text-align: center;
+  margin: 50px 0;
+}
+
+/*produto*/
+
+.produto {
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 30px;
+  border-radius: 7px;
+  -o-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  box-shadow: 0 0 3px #aaaaaa;
+  -o-box-shadow: 0 0 3px #aaaaaa;
+  -ms-box-shadow: 0 0 3px #aaaaaa;
+  -moz-box-shadow: 0 0 3px #aaaaaa;
+  -webkit-box-shadow: 0 0 3px #aaaaaa;
+}
+.produto .header-produto {
+  font-size: 12px;
+  color: #000;
+  display: block;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  z-index: 1000;
+}
+.produto .header-produto img {
+  display: block;
+  margin: 7px auto;
+}
+.produto .header-produto h2 {
+  font-weight: bold;
+  display: block;
+  font-size: 20px;
+  margin: 3px 0 0;
+}
+.produto .header-produto h2 a {
+  color: #3D3D3D;
+  text-decoration: none;
+}
+.produto .header-produto .item-favorito,
+.produto .header-produto .item-removido {
+  font-size: 20px;
+  color: yellow;
+  text-align: center;
+  display: block;
+  padding-top: 5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+.produto .header-produto .item-removido {
+  color: #ca0e0e;
+}
+.produto .image-produto img {
+  margin: 0 auto;
+}
+.produto .desc-produto {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  color: #ffffff;
+  display: block;
+  padding: 65px 10px 0;
+  background: rgba(255, 255, 255, 0);
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(0, 0, 0, 0.7)));
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+}
+.produto .desc-produto .price {
+  color: #d43f3a;
+  font: bold 25px 'Open Sans';
+}
+.produto .desc-produto .name h3 {
+  margin-top: 5px;
+  color: #023469;
+  font: bold 18px 'Open Sans';
+}
+.produto .option-produto {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 100px 20px 20px 20px;
+  text-align: center;
+}
+.produto .option-produto .item-circle {
+  margin: 10px 5px;
+  display: inline-block;
+}
+.produto:hover .option-produto {
+  display: block;
+}
+.produto.disabled {
+  opacity: 0.5;
+}
+.produto.disabled:hover {
+  opacity: 1;
+}

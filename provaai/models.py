@@ -65,12 +65,20 @@ class Cloth(BaseModel):
 	store = ForeignKeyField(Store)
 	brand = ForeignKeyField(Brand,null=True)
 	image = ForeignKeyField(Image)
+	price = DecimalField(decimal_places=2)
 	name = CharField()
+	fullname = CharField()
+	color = CharField(null=True)
 	description = CharField(null=True)
+	sex = CharField(max_length=1)
 	in_showcase = BooleanField(default=False)
 	is_frozen = BooleanField(default=False)
 
-MODELS=[User,Brand,Image,Store,Cloth]
+class Category(BaseModel):
+	name = CharField()
+	parent = ForeignKeyField('self',null=True)
+
+MODELS=[User,Brand,Image,Store,Cloth, Category]
 def create_tables():
 	for m in MODELS:
 		m.create_table(True)

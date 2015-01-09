@@ -2,7 +2,7 @@
 
 {% from "common/_macros.html" import render_field %}
 
-{% block modal_title %} Edite sua peça {% endblock %}
+{% block modal_title %} Adicione uma nova peça {% endblock %}
 
 {% block modal_body %}
 	<div class="row">
@@ -11,18 +11,24 @@
 				{{ render_field(form['add_cloth'].name) }}
 				{{ render_field(form['add_cloth'].color) }}
 				{{ render_field(form['add_cloth'].brand) }}
+
+				<p><small>Título, cor e marca devem conter apenas uma palavra.</small></p>
+
 				{{ render_field(form['add_cloth'].price) }}
 				{{ render_field(form['add_cloth'].fullname) }}
 				{{ render_field(form['add_cloth'].description) }}
+
+				<p><small>Toda palavra será usada como tag no campo de busca.</small></p>
+
 				{{ render_field(form['add_cloth'].photo,onchange='PreviewImage()') }}
 				{{ render_field(form['add_cloth'].category) }}
+				{{ render_field(form['add_cloth'].subcategory) }}
 				{{ render_field(form['add_cloth'].sex) }}
-				{{ render_field(form['add_cloth'].favorite) }}
+				
 				{{ form['add_cloth'].hidden_tag() }}
 			</form>
 		</div>
 		<div class="col-md-6">
-
 			<div class="peca">
 				<img id="uploadPreview" class="img-responsive" />
 			</div>
@@ -42,6 +48,6 @@
 {% endblock %}
 
 {% block modal_footer %}
-	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	<button type="submit" class="btn btn-primary" form="form_add_cloth" formaction="{{ url_for('StoreView:add', id=store.id) }}" formmethod="post" formenctype="multipart/form-data">publicar peça</button>
+	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	<button type="submit" class="btn btn-primary" form="form_add_cloth" formaction="{{ url_for('StoreView:add', id=store.id) }}?show_dialog=True" formmethod="post" formenctype="multipart/form-data">Publicar peça</button>
 {% endblock %}

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from wtforms import BooleanField, TextField, TextAreaField, PasswordField, validators
+from wtforms import BooleanField, TextField, TextAreaField, PasswordField, validators, SelectField
 from flask_wtf import Form
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 
@@ -37,22 +37,37 @@ class PhotoForm(Form):
     ])
     description = TextField(u'Descrição')
 
+from .models import Category
 class AddClothForm(Form):
     #store = 
     name = TextField(u'Título curto da peça', [validators.Required()])
     color = TextField(u'Cor da peça')
     brand = TextField(u'Marca da peça')
     price = TextField(u'Preço')
-    fullname = TextField(u'Descrição da peça')
+    fullname = TextField(u'Título completo da peça')
     description = TextField(u'Descrição da peça')
     photo = FileField(u'Imagem da peça', validators=[
         FileRequired(),
         FileAllowed(images_manager, u'Imagem Inválida')
     ])
-    category = TextField(u'Categoria')
-    sex = TextField(u'Sexo')
-    favorite = BooleanField(u'Peça favorita')
+    category = SelectField(u'Categoria',coerce=int)
+    subcategory = SelectField(u'SubCategoria',coerce=int)
+    sex = SelectField(u'Sexo', choices=[('M','Masculino'),('F','Feminino')])
     
+    def __init__(self, *args, **kwargs):
+        super(AddClothForm, self).__init__(*args,**kwargs)
+
+        parents = [ c for c in Category.select() if c.parent is None]
+        self.category.choices = [ (c.id, c.name) for c in parents ] 
+        if len(self.category.choices) > 0:
+            self.set_subcategory(parents[0].id)
+        else:
+            self.subcategory.choices = []
+
+
+    def set_subcategory(self, category_id):
+        parent = Category.get(Category.id == category_id)
+        self.subcategory.choices = [ (c.id, c.name) for c in Category.select().where(Category.parent == parent) ] 
 
 class StoreRegistrationForm(Form):
     #Step 1

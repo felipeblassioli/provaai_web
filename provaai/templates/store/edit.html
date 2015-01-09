@@ -1,80 +1,82 @@
 {% extends "common/base.html" %}
+{% from "common/_macros.html" import render_cloth %}
+
 
 {% block title %}Minha Loja{% endblock %}
 
-{% macro render_cloth(cloth) %}
-  <li class="peca col-xs-12 col-sm-4 col-md-4 col-lg-3">
-    <img src="{{ cloth.image.url }}" class="img reponsive imgPeca" />
-    <!-- Titulo -->
-     <div class="tituloPeca" style="display: none;">
-        <a href="#" class="linkMarca">
-            <img src="{{ url_for('static', filename='img/marcas/hollister.png') }}" alt="Logo da marca" class="img-responsive logoDaMarca">
-            <h2>{{ cloth.brand.name|safe }}</h2>
-        </a>
-        <a href="#" class="linkAddArmario">
-            <img src="{{ url_for('static', filename='img/add-ao-armario.png') }}" alt="Adicionar ao armário" class="img-responsive addAoArmario">
-        </a>
-    </div> <!-- tituloPeca -->
-    <!-- Descricao -->
-    <div class="descricaoPeca" style="display: none;">
-        <h3>{{ cloth.description|safe }}</h3>
-        <div class="prevDadosPeca"></div>
-        <div class="dadosPeca" style="display: none;">
-            <div class="localizacaoPeca">
-                <a href="#" title="">
-                    <img src="{{ url_for('static', filename='img/localizacao-peca.png') }}" alt="Localização da peça">
-                </a>
-            </div>
-            <div class="precoPeca">
-                <p>R$<br><span>{{ cloth.price }}</span></p>
-            </div>
-            <div class="aprovaramDesaprovaramPeca">
-                <div class="aprovaramPeca">
-                    <p>Aprovaram<br><span>130</span></p>
-                </div>
-                <div class="desaprovaramPeca">
-                    <p>Desaprovaram<br><span>12</span></p>
-                </div>
-            </div>
-        </div>
-    </div><!-- descricaoPeca -->
-  </li>
-{% endmacro %}
-
 {% block content %}
-    <div id="header" class="container" style="margin-top: 3em;">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="form-group">
-                    <input class='form-control' type="text" value="{{ store.name }}" />
-                    <textarea class='form-control'>{{ store.description }}</textarea>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="list-group">
-                    <a href="#" class="list-group-item">Configurações</a>
-                    <a href="#" class="list-group-item" onclick="showAddCloth();">Adicionar uma peça</a>
-                </div>
-            </div>
+    <div class="row header-loja">
+        <div class="logo col-xs-12 col-sm-2 col-md-4 col-lg-2">
+            <p><img src="{{ store.logo.url }}" width="120" alt="" class="img-responsive img-circle"></p>
         </div>
-    </div>
+        <div class="descricao col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <form action="" class="store-info-basico
+            ">
+                <div class="form-group">
+                    <input type="text" value="{{ store.name }}" disabled="disabled" class="form-control input-lg">
+                </div>
+                <div class="form-group">
+                    <textarea name="" id="" rows="3" class="form-control" disabled="disabled">{{ store.description }}</textarea>
+                </div>
+            </form>
+
+            <ul class="midias">
+                <li class="facebook"><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                <li class="twitter"><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                <li class="pinterest"><a href="#"><i class="fa fa-pinterest-square"></i></a></li>
+                <li class="linkedin"><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+            </ul>
+        </div>
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+            <p>
+                <a href="#" class="editar-descricao-loja btn btn-block btn-default"><i class="fa fa-pencil"></i> Editar</a>
+                <a href="#" class="salvar-descricao-loja hidden btn btn-block btn-default"><i class="fa fa-save"></i> Salvar</a>
+            </p>
+
+            <p><a href="{{ url_for('StoreView:settings', id=store.id) }}" class="btn btn-block btn-default"><i class="fa fa-cogs"></i> Configurações</a></p>
+            <p><a data-toggle="modal" href='#dialog' class="btn btn-block btn-default"><i class="fa fa-plus"></i> Adicionar uma peça</a></p>
+        </div> <!-- menu -->
+    </div> <!-- header-loja -->
 
     <hr />
 
+    <div class="container">
+        <div class="titulo-interno">
+            <h2>Todas as peças</h2>
+        </div>
 
-    <ul class="listaPecas">
-        {% for cloth in showcase %}
-            {{ render_cloth(cloth) }}
-        {% endfor %}
-    </ul>
+        <div class="row produtos-lista">
+            {% for cloth in store.showcase %}
+                {{ render_cloth(cloth, can_edit=True) }}
+            {% endfor %}
+        </div>
+    </div> <!-- Todas as pecas -->
+
 {% endblock %}
 
 {% block tail %}
     {% include 'store/modal_add_cloth.html' %}
-    <script>
-        function showAddCloth(){
-            $('#dialog').modal('show');
-        }
+
+    <script type="text/javascript">
+        $(function(){
+            $(".editar-descricao-loja").click(function(){
+                $(".store-info-basico input, .store-info-basico textarea").removeAttr('disabled');
+                $(this).addClass('hidden');
+                $(".salvar-descricao-loja").removeClass('hidden');
+            });
+
+
+            $(".salvar-descricao-loja").click(function(){
+                $(".store-info-basico input, .store-info-basico textarea").attr('disabled', 'disabled');
+                $(this).addClass('hidden');
+                $(".editar-descricao-loja").removeClass('hidden');
+            });
+        });
+
+
+        {% if auto_show_dialog %}
+            $('#dialog').modal('show'); 
+        {% endif %}
     </script>
+
 {% endblock %}

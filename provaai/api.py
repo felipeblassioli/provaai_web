@@ -9,8 +9,9 @@ from . import app, login_manager, images_manager, admin
 from .models import *
 from .forms import *
 
-def _redirect(endpoint):
-    return redirect(request.args.get("next") or url_for(endpoint))
+def _redirect(endpoint, *args, **kwargs):
+    url_params = kwargs.pop('url_params', '')
+    return redirect(request.args.get("next") or url_for(endpoint, *args, **kwargs)+url_params)
 
 def _render_template(*args, **kwargs):
     kwargs.update(dict(
@@ -48,7 +49,7 @@ def catch_all(path):
         # Flask-classy`s make_proxy method uses request.view_args and accepts no params
         request.view_args.pop('path')
         request.view_args['id'] = store.id
-        return app.view_functions['StoreView:edit']()
+        return app.view_functions['StoreView:index']()
     except Store.DoesNotExist:
         pass
     return abort(404)
@@ -129,6 +130,17 @@ def setup():
     create_tables()
     Brand.create(name="Hollister")
     Brand.create(name="Nike")
+
+    category_data = {
+        u'Calçado': [u'Botas',u'Chinelos',u'Rasteiras',u'Sandalias',u'Sapatenis',u'Sapatilhas','Sapato Casual','Sapato Social',u'Sapatos',u'Tenis'],
+        u'Esporte': [u'Acessorios','Calçados',u'Equipamentos',u'Shorts',u'Camisetas'],
+        u'Bolsas e Acessorios': [u'Acessorios para cabelo',u'Bijuterias',u'Bolsas',u'Bones e chapeus',u'Carteiras',u'Cintos',u'Mochilas e malas',u'Necessaires',u'Oculos',u'Relogios'],
+        u'Casual': [u'Shorts',u'Camisetas',u'Calças Jeans',u'Camisetas',u'Jaquetas',u'Minissaia',u'Moletons',u'Polos',u'Saias',u'Vestidos']
+    }
+    for category, subcategories in category_data.items():
+        c = Category.create(name=category)
+        for s in subcategories:
+            Category.create(name=s,parent=c.id)
     return "Ok"
 
 class StoreView(FlaskView):
@@ -142,7 +154,7 @@ class StoreView(FlaskView):
         current_store = Store.get(Store.id == id)
 
         return _render_template(
-            'store/main.html',
+            'store/index.html',
             store=current_store,
             showcase=current_store.showcase,
             form=dict(
@@ -162,14 +174,16 @@ class StoreView(FlaskView):
         )
 
     @login_required
+    @route('/settings/', methods=['GET','POST'])
     def settings(self, id):
         store = current_user.store
-        form = StoreRegistrationForm(user)
+        form = StoreRegistrationForm(obj=store)
         if form.validate_on_submit():
-            form.populate_obj(user)
-            user.save()
-            redirect('edit_profile')
-        return render_response('edit_profile.html', form=form)
+            form.populate_obj(store)
+            store.save()
+            #_redirect('StoreView:settings', id=id)
+            #render_response('store/settings.html', form=form)
+        return _render_template('store/settings.html', store=store, form=form)
 
     @route('/register/', methods=['GET','POST'])
     def register_store(self):
@@ -226,19 +240,31 @@ class StoreView(FlaskView):
                 store = store,
                 image = img,
                 name = form.name.data,
+                fullname = form.fullname.data,
                 description = form.description.data,
+                color = form.color.data,
+                price = form.price.data,
+                sex = form.sex.data,
                 brand = Brand.select()[0],
                 in_showcase=True
             )
-            return _redirect('index')
+            return _redirect('StoreView:edit',id=id)
         else:
             print 'FAILEEEEEEEEEEEEEEEEEEEED'
-            return "OOOOOOOOK FAILED"
+            current_store = current_store = Store.get(Store.id == id)
+            return _render_template(
+                'store/edit.html',
+                store=current_store,
+                form=dict(
+                    add_cloth=form
+                ),
+                auto_show_dialog=True
+            )
 
 StoreView.register(app)
 
 from flask.ext.admin.contrib.peewee import ModelView
-for m in [User,Store,Cloth]:
+for m in [User,Store,Cloth,Category]:
     admin.add_view(ModelView(m))
 
 print app.url_map

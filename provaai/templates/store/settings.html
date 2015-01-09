@@ -1,0 +1,35 @@
+{% extends "common/base.html" %}
+{% from "common/_macros.html" import render_field %}
+
+{% block title %}Configurações da Loja{% endblock %}
+
+{% block content %}
+
+<div class="container formularios-lojas">
+    <form method=post action="{{ url_for('StoreView:settings', id=store.id) }}" enctype='multipart/form-data'>
+        {{ render_field(form.category, show_label=True) }}
+        {{ render_field(form.name, show_label=True) }}
+        {{ render_field(form.address, show_label=True) }}
+        {{ render_field(form.number, show_label=True) }} {{ render_field(form.extra, show_label=True) }}
+        {{ render_field(form.state, show_label=True) }} {{ render_field(form.city, show_label=True) }}
+        {{ render_field(form.zip_code, show_label=True) }} {{ render_field(form.phone, show_label=True) }}
+        {{ render_field(form.site, show_label=True) }}
+        {{ render_field(form.logo_img, show_label=True, class='', onchange='PreviewImage()') }}
+        <img id="uploadPreview" style="width: 100px; height: 100px;" />
+        {{ render_field(form.description, show_label=True) }}
+        {{ render_field(form.perma_link) }}
+      {{ form.hidden_tag() }}
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+				<button type="button" class="btn btn-block btn-danger btn-lg"><i class="fa fa-trash"></i> Excluir loja</button>
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"></div>
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+				<button type="submit" class="btn btn-success btn-lg btn-block"><i class="fa fa-save"></i> Concluir</button>
+			</div>
+		</div>
+    </form>
+</div>
+
+{% endblock %}

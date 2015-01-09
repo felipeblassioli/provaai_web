@@ -62,23 +62,6 @@
             {{ render_cloth(cloth) }}
         {% endfor %}
     </ul>
-
-    {% include 'store/add_cloth.html' %}
 </section>
 
-
-<script>
-    function showAddClothDialog() {
-        $( "#dialog_add_cloth" ).dialog({
-            autoOpen: true,
-            modal: true,
-            position: 'center' ,
-            draggable: false,
-            minWidth: 600,
-            open: function() {
-                $('.ui-dialog-titlebar-close').bind('click', function() {});
-            }
-        });
-    }
-</script>
 {% endblock %}
