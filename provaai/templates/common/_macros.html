@@ -39,25 +39,25 @@
             <div class="header-produto">
                 <div class="row">
                     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                        <a href="store.html"><img src="{{ cloth.store.logo.url}}" height="30" width="30" class="img-responsive img-circle" alt="{{ cloth.brand.name|safe }}"></a>
+                        <a href="store.html"><img src="{{ cloth.store.logo.url}}" height="35" width="35" class="img-circle" alt="{{ cloth.brand.name|safe }}"></a> <!-- class=img-responsive -->
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <h2><a href="store.html">{{ cloth.store.name }}</a></h2>
                         <p>Título, cor, marca</p>
                     </div>
-                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                         <div class="item-favorito"><i class="fa fa-star"></i></div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="image-produto">
                 <p><a href="#"><img src="{{ cloth.image.url }}" height="360" width="230" alt="" class="img-responsive"></a></p>
             </div>
             <div class="desc-produto">
-                <div class="price">R$ {{ cloth.price }}</div>
-                <div class="name"><h3>{{ cloth.name }}</h3></div>
-                <div class="description"><p><strong>Descrição: </strong>{{ cloth.description }}</p></div>
-            </div>
+                <div class="price">R$<strong>{{ cloth.price }}</strong></div>
+                <div class="name"><h5>{{ cloth.name }}</h5></div>
+                <div class="description"><p><!-- <strong>Descrição: </strong> -->{{ cloth.description }}</p></div>
+            </div>            
             <div class="option-produto">
                 {% if can_edit: %}
                 <div class="favorito item-circle"><a href="#" title="Tornar favorito"><i class="fa fa-star"></i></a></div>
